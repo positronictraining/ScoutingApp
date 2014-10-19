@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<game>
+    <year>2014</year>
+    <gameName>Aerial Assist</gameName>
+    <competitions>
+        <competitionName>Hatsboro Horsham</competitionName>
+        <robots>
+            <teamNumber>1</teamNumber>
+        </robots>
+        <matches>
+            <blueAlliance>4</blueAlliance>
+            <blueAlliance>5</blueAlliance>
+            <blueAlliance>6</blueAlliance>
+            <redAlliance>1</redAlliance>
+            <redAlliance>2</redAlliance>
+            <redAlliance>3</redAlliance>
+            <blueAllianceScore>0</blueAllianceScore>
+            <redAllianceScore>15</redAllianceScore>
+            <pointsScored>
+                <pointName>Autonomous High Goal Lighted</pointName>
+                <pointPeriod>Autonomous</pointPeriod>
+                <pointValue>15</pointValue>
+                <scoringTeam>1</scoringTeam>
+            </pointsScored>
+        </matches>
+    </competitions>
+    <pointTypes>
+        <pointName>Autonomous High Goal Lighted</pointName>
+        <pointPeriod>Autonomous</pointPeriod>
+        <pointValue>15</pointValue>
+        <scoringTeam>0</scoringTeam>
+    </pointTypes>
+</game>
