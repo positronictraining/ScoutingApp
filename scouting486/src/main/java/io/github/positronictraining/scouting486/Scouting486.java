@@ -13,6 +13,7 @@ public class Scouting486 {
 		aerialAssist.getCompetitions().get(0).addMatch(1, 2, 3, 4, 5, 6);
 		aerialAssist.getCompetitions().get(0).getMatches().get(0).pointScored(aerialAssist, 0, 1, "red");
 		aerialAssist.getCompetitions().get(0).addRobot(1);
-		xmlTranslator.writeGameData(aerialAssist);
+		xmlTranslator.writeGameData(aerialAssist, "ScoutingData/scoutingData.xml");
+		System.out.println(xmlTranslator.readGameData("ScoutingData/scoutingData.xml").gameName);
 	}
 }
