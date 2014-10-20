@@ -15,6 +15,7 @@ public class Overview extends JFrame{
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField;
+	private XmlTranslator xmlTranslator;
 	
 	public Overview() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,5 +45,17 @@ public class Overview extends JFrame{
 		gbc_textField.gridy = 1;
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
+	}
+	
+	public Object[] tableDataFromGame(String filePath, String competitionName){
+		Game game = xmlTranslator.readGameData(filePath);
+		Integer i = 0;
+		String s = "";
+		while (competitionName != s){
+			s = game.getCompetitions().get(i).competitionName;
+			i++;
+		}
+		i = i - 1;
+		return null;
 	}
 }
