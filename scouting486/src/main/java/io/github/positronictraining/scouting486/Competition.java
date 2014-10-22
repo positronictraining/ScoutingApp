@@ -12,6 +12,10 @@ public class Competition {
 	@XmlElement
 	private Game competitionGame;
 	@XmlElement
+	private String competitionStartDate;
+	@XmlElement
+	private String competitionEndDate;
+	@XmlElement
 	private ArrayList<Robot> robots = new ArrayList<Robot>();
 	@XmlElement
 	private ArrayList<Match> matches = new ArrayList<Match>();
