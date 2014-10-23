@@ -1,7 +1,6 @@
 package io.github.positronictraining.scouting486;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -28,36 +27,40 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class Overview extends JFrame{
 	
-	private JFrame frame;
 	private JTable dataTable;
 	private JTextField competitionNameTxtFld;
 	private JTextField startDateTxtFld;
 	private JTextField endDateTxtFld;
+	private JComboBox competitionGameComboBox;
+	private JList competitionList;
+	
+	private XmlTranslator xmlTranslator = new XmlTranslator();
 	
 	public Overview() {
 		initialize();
+		this.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(500,400));
-		frame.pack();
+		this.setBounds(100, 100, 450, 300);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setPreferredSize(new Dimension(500,400));
+		this.pack();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
 		dataTable = new JTable();
 		tabbedPane.addTab("Competition Statistics", null, dataTable, null);
 		
-		JList competitionList = new JList();
+		competitionList = new JList();
 		tabbedPane.addTab("Competitions List", null, competitionList, null);
 		
 		JPanel panel = new JPanel();
@@ -77,10 +80,10 @@ public class Overview extends JFrame{
 		gbc_lblNewCompetition.gridx = 0;
 		gbc_lblNewCompetition.gridy = 0;
 		panel.add(lblNewCompetition, gbc_lblNewCompetition);
-		
 		JButton newCompetitionBtn = new JButton("Create New Competition");
 		newCompetitionBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("the new competition button was pressed");
 			}
 		});
 		
@@ -110,7 +113,7 @@ public class Overview extends JFrame{
 		gbc_lblCompetitionGame.gridy = 4;
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
-		JComboBox competitionGameComboBox = new JComboBox();
+		competitionGameComboBox = new JComboBox();
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
@@ -157,5 +160,9 @@ public class Overview extends JFrame{
 		gbc_newCompetitionBtn.gridx = 0;
 		gbc_newCompetitionBtn.gridy = 11;
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
+	}
+	
+	public void refreshJList(File file){
+		this.competitionList.setListData(this.xmlTranslator.getCompetitionNames(file));
 	}
 }

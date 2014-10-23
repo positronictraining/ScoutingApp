@@ -22,6 +22,8 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JButton btnNewRobot;
 	private JButton btnQrCode;
 	
+	private Overview overview;
+	
 	public MainMenu() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets up main menu frame
@@ -70,10 +72,12 @@ public class MainMenu extends JFrame implements ActionListener{
 		
 		setVisible(true); 					//makes the frame visible
 	}
+	
 	public void actionPerformed(ActionEvent event){
 		if (event.getSource() == btnTeamStatistics){
 			System.out.println("the team statistics button was pressed");
-			//TODO
+			overview = new Overview();
+			overview.refreshJList("ScoutingData/ScoutingData.xml");
 		}
 		else if (event.getSource() == btnNewMatch){
 			System.out.println("the new match button was pressed");
