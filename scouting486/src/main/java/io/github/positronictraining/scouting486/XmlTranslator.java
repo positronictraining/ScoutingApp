@@ -8,9 +8,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+
 public class XmlTranslator {
 	
-	ArrayList<File> fileList = new ArrayList<File>();
+	ArrayList<String> fileList = new ArrayList<String>();
 	
 	public void writeGameData(Game game, File file){
 		try{
@@ -43,22 +44,21 @@ public class XmlTranslator {
 		return (String[]) competitionNameList.toArray();
 	}
 	
-	public void writeFileDirectory(File file, File fileDirectory){
+	public void writeFileDirectory(FileSecretary fileSecretary, File fileSecretaryDirectory){
 		try{
-			this.fileList.add(file);
-			JAXBContext jaxbContext = JAXBContext.newInstance();
+			JAXBContext jaxbContext = JAXBContext.newInstance(FileSecretary.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.marshal(file, fileDirectory);
+			jaxbMarshaller.marshal(fileSecretary, fileSecretaryDirectory);
 		}catch (JAXBException e){
 			e.printStackTrace();
 		}
 	}
-	public File readFileDirectory(File fileDirectory){
+	public FileSecretary readFileDirectory(File fileSecretaryDirectory){
 		try{
-			JAXBContext jaxbContext = JAXBContext.newInstance(File.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(FileSecretary.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			File readFile = (File) jaxbUnmarshaller.unmarshal(fileDirectory);
+			FileSecretary readFile = (FileSecretary) jaxbUnmarshaller.unmarshal(fileSecretaryDirectory);
 			return readFile;
 		}catch (JAXBException e){
 			e.printStackTrace();

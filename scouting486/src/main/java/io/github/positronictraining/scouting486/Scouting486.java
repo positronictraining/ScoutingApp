@@ -11,6 +11,10 @@ public class Scouting486 {
 		
 		MainMenu mainMenu = new MainMenu();
 		XmlTranslator xmlTranslator = new XmlTranslator();
+		FileSecretary fileSecretary = new FileSecretary();
+		fileSecretary.fileList.add("ScoutingData/FileDirectory.xml");
+		fileSecretary.fileList.add("ScoutingData/ScoutingData.xml");
+		xmlTranslator.writeFileDirectory(fileSecretary, fileDirectory);
 		Game aerialAssist = new Game();
 		aerialAssist.year = 2014;
 		aerialAssist.gameName = "Aerial Assist";

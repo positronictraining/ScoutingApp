@@ -77,7 +77,6 @@ public class MainMenu extends JFrame implements ActionListener{
 		if (event.getSource() == btnTeamStatistics){
 			System.out.println("the team statistics button was pressed");
 			overview = new Overview();
-			overview.refreshJList("ScoutingData/ScoutingData.xml");
 		}
 		else if (event.getSource() == btnNewMatch){
 			System.out.println("the new match button was pressed");
