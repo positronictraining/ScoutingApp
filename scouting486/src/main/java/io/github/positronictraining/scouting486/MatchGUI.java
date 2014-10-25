@@ -1,3 +1,5 @@
+package io.github.positronictraining.scouting486;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class Match_GUI extends JFrame {
+public class MatchGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -24,27 +26,13 @@ public class Match_GUI extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Match_GUI frame = new Match_GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+	public MatchGUI(){
+		this.initialize();
+		this.setVisible(true);
 	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Match_GUI() {
+	
+	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

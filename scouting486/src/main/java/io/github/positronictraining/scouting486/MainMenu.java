@@ -23,6 +23,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JButton btnQrCode;
 	
 	private Overview overview;
+	private MatchGUI newMatch;
 	
 	public MainMenu() {
 		
@@ -80,7 +81,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		}
 		else if (event.getSource() == btnNewMatch){
 			System.out.println("the new match button was pressed");
-			//TODO
+			newMatch = new MatchGUI();
 		}
 		else if (event.getSource() == btnNewRobot){
 			System.out.println("the new robot button was pressed");
