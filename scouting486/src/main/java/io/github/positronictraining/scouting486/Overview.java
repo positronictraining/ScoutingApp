@@ -31,6 +31,10 @@ import java.io.File;
 
 public class Overview extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable dataTable;
 	private JTextField competitionNameTxtFld;
 	private JTextField startDateTxtFld;

@@ -9,6 +9,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 
+@SuppressWarnings("restriction")
 public class XmlTranslator {
 	
 	ArrayList<String> fileList = new ArrayList<String>();
