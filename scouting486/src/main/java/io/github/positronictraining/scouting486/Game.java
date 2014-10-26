@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@SuppressWarnings("restriction") //gets rid of incorrect and annoying eclipse error messages
 @XmlRootElement
 public class Game {
 	@XmlElement
