@@ -74,20 +74,20 @@ public class MainMenu extends JFrame implements ActionListener{
 		setVisible(true); 					//makes the frame visible
 	}
 	
-	public void actionPerformed(ActionEvent event){
-		if (event.getSource() == btnTeamStatistics){
+	public void actionPerformed(ActionEvent event){ //what happens when a button of any type is pressed
+		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
 			System.out.println("the team statistics button was pressed");
 			overview = new Overview();
 		}
-		else if (event.getSource() == btnNewMatch){
+		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
 			newMatch = new MatchGUI();
 		}
-		else if (event.getSource() == btnNewRobot){
+		else if (event.getSource() == btnNewRobot){ //what happens if the new robot button was pressed
 			System.out.println("the new robot button was pressed");
 			//TODO
 		}
-		else{
+		else{ //what happens if the qr code button is pressed
 			System.out.println("the qr code button was pressed");
 			//TODO
 		}
