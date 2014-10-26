@@ -5,17 +5,23 @@ import java.io.File;
 public class Scouting486 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Files
+		
+		//FILES
 		File scoutingData = new File("ScoutingData/ScoutingData.xml");
 		File fileDirectory = new File("ScoutingData/FileDirectory.xml");
 		
+		//CLASSES TO BE USED
 		MainMenu mainMenu = new MainMenu();
 		XmlTranslator xmlTranslator = new XmlTranslator();
 		FileSecretary fileSecretary = new FileSecretary();
+		Game aerialAssist = new Game();
+		
+		//FILE SECRETARY CODE
 		fileSecretary.fileList.add("ScoutingData/FileDirectory.xml");
 		fileSecretary.fileList.add("ScoutingData/ScoutingData.xml");
 		xmlTranslator.writeFileDirectory(fileSecretary, fileDirectory);
-		Game aerialAssist = new Game();
+		
+		//AERIAL ASSIST EXAMPLE CODE
 		aerialAssist.year = 2014;
 		aerialAssist.gameName = "Aerial Assist";
 		aerialAssist.addNewPointType("Autonomous High Goal Lighted", "Autonomous", 15);
