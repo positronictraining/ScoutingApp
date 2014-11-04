@@ -34,6 +34,15 @@ public class Game {
 		competitions.add(newCompetition);
 	}
 	
+	public void addNewCompetition(String competitionName, Game competitionGame, String competitionStartDate, String competitionEndDate){ //adds a new competition for storage
+		Competition newCompetition = new Competition();
+		newCompetition.competitionName = competitionName;
+		newCompetition.competitionGame = competitionGame;
+		newCompetition.competitionStartDate = competitionStartDate;
+		newCompetition.competitionEndDate = competitionEndDate;
+		competitions.add(newCompetition);
+	}
+	
 	public ArrayList<Competition> getCompetitions(){ //getter for competitions since competitions is private
 		return competitions;
 	}

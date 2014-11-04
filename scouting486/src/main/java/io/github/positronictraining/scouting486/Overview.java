@@ -1,7 +1,5 @@
 package io.github.positronictraining.scouting486;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
@@ -33,6 +31,8 @@ import java.io.File;
 //TODO: implement data table to actually display data
 //TODO: implement competition list to display data
 //TODO: implement competition list to change data table on component selection
+//TODO: implement JComboBox
+//TODO: get rid of diagnositcs
 
 public class Overview extends JFrame{
 	
@@ -46,8 +46,9 @@ public class Overview extends JFrame{
 	private JList competitionList;
 	
 	
-	//XML TRANSLATOR INSTANCE
+	//INSTANCES TO BE USED
 	private XmlTranslator xmlTranslator = new XmlTranslator();
+	private FileSecretary fileSecretary = new FileSecretary();
 	
 	
 	//METHODS
@@ -89,6 +90,12 @@ public class Overview extends JFrame{
 		JButton newCompetitionBtn = new JButton("Create New Competition");	//New JButton called newCompetitionBtn
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
+				Game newChangedGame = xmlTranslator.readGameData(fileSecretary.gameFile); //reads game data from gameFile and adds a new competition
+				System.out.println(fileSecretary.gameFile); //diagnostic for fileSecretary
+				System.out.println(newChangedGame); //diagnostic for newChangedGame
+				newChangedGame.addNewCompetition(competitionNameTxtFld.getText(),newChangedGame,startDateTxtFld.getText(),endDateTxtFld.getText()); //adds new competition data to new changed game
+				xmlTranslator.writeGameData(newChangedGame, fileSecretary.gameFile); //writes new changed game to the write file
+				refreshCompetitionList(fileSecretary.gameFile); //refreshes competitionList
 				System.out.println("the new competition button was pressed");	//tells that the button was pressed in the console
 			}
 		});
@@ -120,6 +127,7 @@ public class Overview extends JFrame{
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
 		competitionGameComboBox = new JComboBox();					//new combo box
+		competitionGameComboBox.setEditable(true);
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
@@ -168,7 +176,7 @@ public class Overview extends JFrame{
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
 	
-	public void refreshJList(File file){							//a method to refresh the JList tab
-		this.competitionList.setListData(this.xmlTranslator.getCompetitionNames(file)); //takes all competitions from a given game and adds it
+	public void refreshCompetitionList(File file){		//a method to refresh the competitionList tab
+		this.competitionList.setListData(this.xmlTranslator.getCompetitionNames(file)); //takes all competitions from a given game and adds it to the list data
 	}
 }

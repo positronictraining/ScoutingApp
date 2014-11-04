@@ -14,15 +14,15 @@ public class Competition {		//Makes instances of the Competition XML readable an
 	@XmlElement
 	public String competitionName;
 	@XmlElement
-	private Game competitionGame;
+	public Game competitionGame;
 	@XmlElement
-	private String competitionStartDate;
+	public String competitionStartDate;
 	@XmlElement
-	private String competitionEndDate;
+	public String competitionEndDate;
 	@XmlElement
-	private ArrayList<Robot> robots = new ArrayList<Robot>();
+	public ArrayList<Robot> robots = new ArrayList<Robot>();
 	@XmlElement
-	private ArrayList<Match> matches = new ArrayList<Match>();
+	public ArrayList<Match> matches = new ArrayList<Match>();
 	
 	
 	//METHODS
