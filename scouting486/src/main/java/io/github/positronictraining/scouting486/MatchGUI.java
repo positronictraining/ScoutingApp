@@ -62,18 +62,6 @@ public class MatchGUI extends JFrame {
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton btnSubmitTeam_5 = new JButton("Submit Team");
-		btnSubmitTeam_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 1 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam_5 = new GridBagConstraints();
-		gbc_btnSubmitTeam_5.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam_5.gridx = 4;
-		gbc_btnSubmitTeam_5.gridy = 1;
-		contentPane.add(btnSubmitTeam_5, gbc_btnSubmitTeam_5);
-		
 		JLabel lblEnterRed = new JLabel("Enter Red 2 Team Name");
 		GridBagConstraints gbc_lblEnterRed = new GridBagConstraints();
 		gbc_lblEnterRed.anchor = GridBagConstraints.EAST;
@@ -90,18 +78,6 @@ public class MatchGUI extends JFrame {
 		gbc_textField_1.gridy = 2;
 		contentPane.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
-		
-		JButton btnSubmitTeam = new JButton("Submit Team");
-		btnSubmitTeam.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 2 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam = new GridBagConstraints();
-		gbc_btnSubmitTeam.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam.gridx = 4;
-		gbc_btnSubmitTeam.gridy = 2;
-		contentPane.add(btnSubmitTeam, gbc_btnSubmitTeam);
 		
 		JLabel lblEnterRed_1 = new JLabel("Enter Red 3 Team Name");
 		GridBagConstraints gbc_lblEnterRed_1 = new GridBagConstraints();
@@ -120,18 +96,6 @@ public class MatchGUI extends JFrame {
 		contentPane.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnSubmitTeam_1 = new JButton("Submit Team");
-		btnSubmitTeam_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 3 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam_1 = new GridBagConstraints();
-		gbc_btnSubmitTeam_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam_1.gridx = 4;
-		gbc_btnSubmitTeam_1.gridy = 3;
-		contentPane.add(btnSubmitTeam_1, gbc_btnSubmitTeam_1);
-		
 		JLabel lblEnterBlue = new JLabel("Enter Blue 1 Team Name");
 		GridBagConstraints gbc_lblEnterBlue = new GridBagConstraints();
 		gbc_lblEnterBlue.insets = new Insets(0, 0, 5, 5);
@@ -148,18 +112,6 @@ public class MatchGUI extends JFrame {
 		gbc_textField_3.gridy = 4;
 		contentPane.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
-		
-		JButton btnSubmitTeam_2 = new JButton("Submit Team");
-		btnSubmitTeam_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 4 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam_2 = new GridBagConstraints();
-		gbc_btnSubmitTeam_2.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam_2.gridx = 4;
-		gbc_btnSubmitTeam_2.gridy = 4;
-		contentPane.add(btnSubmitTeam_2, gbc_btnSubmitTeam_2);
 		
 		JLabel lblEnterBlue_1 = new JLabel("Enter Blue 2 Team Name");
 		GridBagConstraints gbc_lblEnterBlue_1 = new GridBagConstraints();
@@ -178,18 +130,6 @@ public class MatchGUI extends JFrame {
 		contentPane.add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
 		
-		JButton btnSubmitTeam_3 = new JButton("Submit Team");
-		btnSubmitTeam_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 5 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam_3 = new GridBagConstraints();
-		gbc_btnSubmitTeam_3.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam_3.gridx = 4;
-		gbc_btnSubmitTeam_3.gridy = 5;
-		contentPane.add(btnSubmitTeam_3, gbc_btnSubmitTeam_3);
-		
 		JLabel lblEnterBlue_2 = new JLabel("Enter Blue 3 Team Name");
 		GridBagConstraints gbc_lblEnterBlue_2 = new GridBagConstraints();
 		gbc_lblEnterBlue_2.insets = new Insets(0, 0, 5, 5);
@@ -207,22 +147,10 @@ public class MatchGUI extends JFrame {
 		contentPane.add(textField_5, gbc_textField_5);
 		textField_5.setColumns(10);
 		
-		JButton btnSubmitTeam_4 = new JButton("Submit Team");
-		btnSubmitTeam_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 6 was pressed.");
-			}
-		});
-		GridBagConstraints gbc_btnSubmitTeam_4 = new GridBagConstraints();
-		gbc_btnSubmitTeam_4.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmitTeam_4.gridx = 4;
-		gbc_btnSubmitTeam_4.gridy = 6;
-		contentPane.add(btnSubmitTeam_4, gbc_btnSubmitTeam_4);
-		
 		JButton btnCreateMatch = new JButton("Create Match");
 		btnCreateMatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button 7 was pressed.");
+				System.out.println("Create New Match Button");
 			}
 		});
 		GridBagConstraints gbc_btnCreateMatch = new GridBagConstraints();
@@ -231,5 +159,4 @@ public class MatchGUI extends JFrame {
 		gbc_btnCreateMatch.gridy = 7;
 		contentPane.add(btnCreateMatch, gbc_btnCreateMatch);
 	}
-
 }
