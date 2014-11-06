@@ -3,7 +3,7 @@ To remember:
 	refresh competition scroll selection in new completion tab when a new game is added
 	get rid of exit on close
 	make main menu and other JFrames much larger
-
+	make a game array list somewhere
 
 
 Features to Add
@@ -39,7 +39,7 @@ Features to Add
 	Add a new match statistics tab (with a link in the main menu)
 		display all match data for every match
 
-	A way to save and read all game data for every game using serialization
+	?-A way to save and read all game data for every game using serialization
 
 	QR Code to share all game data
 

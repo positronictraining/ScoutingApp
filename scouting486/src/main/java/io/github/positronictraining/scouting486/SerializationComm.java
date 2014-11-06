@@ -39,13 +39,15 @@ public class SerializationComm {
 		return desiredDirectory;	
 	}
 	
-	public void writeGame(Game game, String filepath){
+	public void writeGame(Game game){
+		
+		this.newGameFile(game.gameName);
 		
 		try{
 			
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("filepath"));
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.getGameFileDirectory(game.gameName)));
 			objectOutputStream.writeObject(game);
-			System.out.println("game has been told to write to"+filepath);
+			System.out.println("game has been told to write to"+this.getGameFileDirectory(game.gameName));
 
 		} catch(IOException exception){
 
@@ -53,7 +55,7 @@ public class SerializationComm {
 		}
 	}
 	
-	public Game writeGame(String filepath) throws ClassNotFoundException{
+	public Game readGame(String filepath) throws ClassNotFoundException{
 		
 		try{
 			

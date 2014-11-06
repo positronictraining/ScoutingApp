@@ -5,9 +5,11 @@ import javax.swing.JTabbedPane;
 
 import java.awt.BorderLayout;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.MutableComboBoxModel;
 
 import java.awt.GridBagLayout;
 
@@ -26,6 +28,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.ArrayList;
 
 //TODO: implement text field and competition button to add data
 //TODO: implement data table to actually display data
@@ -34,7 +37,7 @@ import java.io.File;
 //TODO: implement JComboBox
 //TODO: get rid of diagnositcs
 
-public class Overview extends JFrame{
+public class CompetitionGUI extends JFrame{
 	
 	//FRAME COMPONENTS
 	private static final long serialVersionUID = 1L;
@@ -45,10 +48,10 @@ public class Overview extends JFrame{
 	public JComboBox competitionGameComboBox;
 	public JList competitionList;
 
-	
+	private SerializationComm serialcomm = new SerializationComm();
 	
 	//METHODS
-	public Overview() { //initializes and shows a new overview page whenever a new instance of Overview is made
+	public CompetitionGUI() { //initializes and shows a new overview page whenever a new instance of Overview is made
 		initialize();
 		this.setVisible(true);
 	}
@@ -87,6 +90,21 @@ public class Overview extends JFrame{
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				
+				String gameName = (String) competitionGameComboBox.getSelectedItem();
+				String gameDirectory = serialcomm.getGameFileDirectory(gameName);
+				
+				try {
+					
+					Game game = serialcomm.readGame(gameDirectory);
+					game.addNewCompetition(competitionNameTxtFld.getText(),game,startDateTxtFld.getText(),endDateTxtFld.getText());
+					
+					competitionNameTxtFld.setText("");
+					startDateTxtFld.setText("");
+					endDateTxtFld.setText("");
+					
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -117,7 +135,6 @@ public class Overview extends JFrame{
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
 		competitionGameComboBox = new JComboBox();					//new combo box
-		competitionGameComboBox.setEditable(true);
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
@@ -165,4 +182,12 @@ public class Overview extends JFrame{
 		gbc_newCompetitionBtn.gridy = 11;
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
+	
+	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
+		this.competitionGameComboBox.removeAll();
+		for (int i=0; i<gameList.size(); i++){
+			this.competitionGameComboBox.addItem(gameList.get(i));
+		}
+	}
+	
 }
