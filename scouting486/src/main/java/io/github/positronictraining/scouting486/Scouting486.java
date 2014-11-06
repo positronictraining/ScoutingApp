@@ -1,31 +1,24 @@
 package io.github.positronictraining.scouting486;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Scouting486 {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		MainMenu mainMenu = new MainMenu();
 		
-		FileOutputStream fileStream = new FileOutputStream("/Users/Daniel/Documents/Robotics/2014-2015 Season/ScoutingApp/scouting486/ScoutingData/ScoutingData.ser");
-		ObjectOutputStream outputStream = new ObjectOutputStream(fileStream);
+		FileInputStream fileInputStream = new FileInputStream("/scouting486/ScoutingData/ScoutingData.ser");
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		
-		Game aerialAssist = new Game();
+		Game aerialAssist = (Game) objectInputStream.readObject();
 		
-		aerialAssist.year = 2014;
-		aerialAssist.gameName = "Aerial Assist";
-		aerialAssist.addNewPointType("Autonomous High Goal Lighted", "Autonomous", 15);
-		aerialAssist.addNewCompetition("Hatsboro Horsham");
-		aerialAssist.getCompetitions().get(0).addMatch(1, 2, 3, 4, 5, 6);
-		aerialAssist.getCompetitions().get(0).getMatches().get(0).pointScored(aerialAssist, 0, 1, "red");
-		
-		outputStream.writeObject(aerialAssist);
-		
-		outputStream.close();
+		objectInputStream.close();
 		
 	}
 }

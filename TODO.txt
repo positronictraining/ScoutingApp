@@ -1,0 +1,46 @@
+
+To remember:
+	refresh competition scroll selection in new completion tab when a new game is added
+	get rid of exit on close
+	make main menu and other JFrames much larger
+
+
+
+Features to Add
+	
+	Team Statistics Tab from main menu
+		Team Statistics
+			create new competition
+				competition name
+					get competition name when “create new competition” button is pressed
+					clear textfield
+				competition game
+					get competition game that was selected
+				start date
+					get competition start date when the new competition button is pressed
+					clear textfield
+				end date
+					get competition end date when the new competition button is pressed
+					clear textfield
+
+		Team Statistics Data table
+			should display
+				teams in competition
+				wins and losses
+				total points scored
+				types of points scored and how many of those individual points
+				robot properties (like player type)
+			should have a refresh data table method
+			should be exportable to a .csv file for excel or numbers
+
+		Competition List
+			will change data table display to that competition
+
+	Add a new match statistics tab (with a link in the main menu)
+		display all match data for every match
+
+	A way to save and read all game data for every game using serialization
+
+	QR Code to share all game data
+
+			
