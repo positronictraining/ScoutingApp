@@ -1,23 +1,17 @@
 package io.github.positronictraining.scouting486;
 
+import java.io.*;
 import java.util.ArrayList;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@SuppressWarnings("restriction") //gets rid of incorrect and annoying eclipse error messages
-@XmlRootElement
-public class Game {
+
+public class Game implements Serializable{
 	
 	//VARIABLES
-	@XmlElement
-	int year; //Creates an XML readable and writable variable for game called year
-	@XmlElement
-	String gameName;//Creates an XML readable and writable variable for game called gameName
-	@XmlElement
-	private ArrayList<Competition> competitions = new ArrayList<Competition>();//Creates an XML readable and writable variable for game called competitions
-	@XmlElement
-	private ArrayList<Point> pointTypes = new ArrayList<Point>();//Creates an XML readable and writable variable for game called pointTypes
+	int year;
+	String gameName;
+	private ArrayList<Competition> competitions = new ArrayList<Competition>();
+	private ArrayList<Point> pointTypes = new ArrayList<Point>();
 	
 	
 	//METHODS

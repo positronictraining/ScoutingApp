@@ -1,29 +1,19 @@
 package io.github.positronictraining.scouting486;
 
+import java.io.*;
 import java.util.ArrayList;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@SuppressWarnings("restriction") //suppresses unwanted and inaccurate warning messages
-@XmlRootElement
-public class Match {
+public class Match implements Serializable{
 	
 	//VARIABLES
-	@XmlElement
-	public int[] blueAlliance = new int[3]; //creates an XML read-and-writable variable called blueAlliance for the match
-	@XmlElement
-	public int[] redAlliance = new int[3];  //creates an XML read-and-writable variable called redAlliance for the match
-	@XmlElement
-	private int blueAllianceScore;  //creates an XML read-and-writable variable called blueAllianceScore for the match
-	@XmlElement
-	private int redAllianceScore; //creates an XML read-and-writable variable called redAllianceScore for the match
-	@XmlElement
-	private String gameComment; //creates an XML read-and-writable variable called game comment for the match
-	@XmlElement
-	private ArrayList<Point> pointsScored = new ArrayList<Point>(); //creates an XML read-and-writable variable called pointsScored for the match
-	@XmlElement
-	private ArrayList<Point> penalties = new ArrayList<Point>(); //creates an XML read-and-writable variable called penalties for the match
+	public int[] blueAlliance = new int[3];
+	public int[] redAlliance = new int[3];
+	private int blueAllianceScore;
+	private int redAllianceScore;
+	private String gameComment;
+	private ArrayList<Point> pointsScored = new ArrayList<Point>();
+	private ArrayList<Point> penalties = new ArrayList<Point>();
 	
 	//METHODS
 	public void setRedAndBlueAlliances(int red1, int red2, int red3, int blue1, int blue2, int blue3){ //sets matches for the team

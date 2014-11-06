@@ -1,27 +1,18 @@
 package io.github.positronictraining.scouting486;
 
+import java.io.*;
 import java.util.ArrayList;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@SuppressWarnings("restriction")
-@XmlRootElement
-public class Competition {		//Makes instances of the Competition XML readable and writable.
+
+public class Competition implements Serializable{
 	
 	//VARIABLES
-	//Note: @XmlElement is used to point at the variables that need to be stored in the XML file.
-	@XmlElement
 	public String competitionName;
-	@XmlElement
 	public Game competitionGame;
-	@XmlElement
 	public String competitionStartDate;
-	@XmlElement
 	public String competitionEndDate;
-	@XmlElement
 	public ArrayList<Robot> robots = new ArrayList<Robot>();
-	@XmlElement
 	public ArrayList<Match> matches = new ArrayList<Match>();
 	
 	

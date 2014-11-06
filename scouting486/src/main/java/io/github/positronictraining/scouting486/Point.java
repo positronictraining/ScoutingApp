@@ -1,21 +1,14 @@
 package io.github.positronictraining.scouting486;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.*;
 
-@SuppressWarnings("restriction") //to get rid of annoying and inaccurate warnings
-@XmlRootElement
-public class Point {
+public class Point implements Serializable{
 	
 	//VARIABLES
-	@XmlElement
-	private String pointName;  //creates an XML read-and-writable variable called pointName for the robot
-	@XmlElement
-	private String pointPeriod; //creates an XML read-and-writable variable called pointPeriod for the robot
-	@XmlElement
-	private int pointValue; //creates an XML read-and-writable variable called pointValue for the robot
-	@XmlElement
-	private int scoringTeam;  //creates an XML read-and-writable variable called scoringTeam for the robot
+	private String pointName;
+	private String pointPeriod;
+	private int pointValue;
+	private int scoringTeam;
 	
 	
 	//METHODS

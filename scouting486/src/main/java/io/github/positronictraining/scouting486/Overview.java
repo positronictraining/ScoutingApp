@@ -38,17 +38,13 @@ public class Overview extends JFrame{
 	
 	//FRAME COMPONENTS
 	private static final long serialVersionUID = 1L;
-	private JTable dataTable;
-	private JTextField competitionNameTxtFld;
-	private JTextField startDateTxtFld;
-	private JTextField endDateTxtFld;
-	private JComboBox competitionGameComboBox;
-	private JList competitionList;
-	
-	
-	//INSTANCES TO BE USED
-	private XmlTranslator xmlTranslator = new XmlTranslator();
-	private FileSecretary fileSecretary = new FileSecretary();
+	public JTable dataTable;
+	public JTextField competitionNameTxtFld;
+	public JTextField startDateTxtFld;
+	public JTextField endDateTxtFld;
+	public JComboBox competitionGameComboBox;
+	public JList competitionList;
+
 	
 	
 	//METHODS
@@ -90,13 +86,7 @@ public class Overview extends JFrame{
 		JButton newCompetitionBtn = new JButton("Create New Competition");	//New JButton called newCompetitionBtn
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
-				Game newChangedGame = xmlTranslator.readGameData(fileSecretary.gameFile); //reads game data from gameFile and adds a new competition
-				System.out.println(fileSecretary.gameFile); //diagnostic for fileSecretary
-				System.out.println(newChangedGame); //diagnostic for newChangedGame
-				newChangedGame.addNewCompetition(competitionNameTxtFld.getText(),newChangedGame,startDateTxtFld.getText(),endDateTxtFld.getText()); //adds new competition data to new changed game
-				xmlTranslator.writeGameData(newChangedGame, fileSecretary.gameFile); //writes new changed game to the write file
-				refreshCompetitionList(fileSecretary.gameFile); //refreshes competitionList
-				System.out.println("the new competition button was pressed");	//tells that the button was pressed in the console
+				
 			}
 		});
 		
@@ -174,9 +164,5 @@ public class Overview extends JFrame{
 		gbc_newCompetitionBtn.gridx = 0;
 		gbc_newCompetitionBtn.gridy = 11;
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
-	}
-	
-	public void refreshCompetitionList(File file){		//a method to refresh the competitionList tab
-		this.competitionList.setListData(this.xmlTranslator.getCompetitionNames(file)); //takes all competitions from a given game and adds it to the list data
 	}
 }
