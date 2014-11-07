@@ -78,6 +78,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
 			System.out.println("the team statistics button was pressed");
 			competitionGUI = new CompetitionGUI();
+			competitionGUI.refreshCompetitionGameComboBox(gameList);
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");

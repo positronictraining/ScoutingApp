@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-public class SerializationComm {
+public class SerializationComm implements Serializable{
 	
 	private ArrayList<String> gameFileDirectories = new ArrayList<String>();
 	
@@ -47,6 +48,20 @@ public class SerializationComm {
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.getGameFileDirectory(game.gameName)));
 			objectOutputStream.writeObject(game);
+			System.out.println("game has been told to write to"+this.getGameFileDirectory(game.gameName));
+
+		} catch(IOException exception){
+
+			exception.printStackTrace();		
+		}
+	}
+	
+	public void writeGivenObject(){
+		File newFile = new File("/scouting486/ScoutingData/serialData.ser");
+		try{
+			
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(newFile.getAbsolutePath()));
+			objectOutputStream.writeObject();
 			System.out.println("game has been told to write to"+this.getGameFileDirectory(game.gameName));
 
 		} catch(IOException exception){

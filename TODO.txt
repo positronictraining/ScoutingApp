@@ -43,4 +43,4 @@ Features to Add
 
 	QR Code to share all game data
 
-			
+	Make a new game gui
