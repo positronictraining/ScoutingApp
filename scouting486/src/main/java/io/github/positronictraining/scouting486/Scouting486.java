@@ -1,5 +1,6 @@
 package io.github.positronictraining.scouting486;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +15,6 @@ public class Scouting486 {
 		
 		MainMenu mainMenu = new MainMenu();
 		SerializationComm serialcomm = new SerializationComm();
-		Library library = new Library();
 		
 		Game aerialAssist = new Game();
  		aerialAssist.year = 2014;

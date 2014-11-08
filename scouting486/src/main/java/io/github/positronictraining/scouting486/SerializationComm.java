@@ -1,5 +1,6 @@
 package io.github.positronictraining.scouting486;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class SerializationComm implements Serializable{
 	
 	// File libraryFile = new File("/scouting486/ScoutingData/libraryfile.ser");
 	private File libraryFile = new File("ScoutingData/libraryfile.ser");
+	private Library library;
 	
 	public SerializationComm() {
 		new File("ScoutingData/").mkdirs();
@@ -64,19 +66,13 @@ public class SerializationComm implements Serializable{
 	public void writeGame(Game game){
 		
 		this.newGameFile(game.gameName);
-		
-		try {
-			readLibrary().addGame(game);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		getLibrary().addGame(game);
+		writeLibrary();
 		try{
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.findGameFileDirectory(game.gameName)));
 			objectOutputStream.writeObject(game);
-			System.out.println("game has been told to write to"+this.findGameFileDirectory(game.gameName));
+			System.out.println("game has been told to write to "+this.findGameFileDirectory(game.gameName));
 			objectOutputStream.close();
 			
 		} catch(IOException exception){
@@ -93,7 +89,7 @@ public class SerializationComm implements Serializable{
 			
 			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("filepath"));
 			Game game = (Game) objectInputStream.readObject();
-			System.out.println("program told to read game at file path"+filepath);
+			System.out.println("program told to read game at file path "+filepath);
 			objectInputStream.close();
 			return game;
 		
@@ -104,13 +100,13 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public void writeLibrary(Library library){
+	public void writeLibrary(){
 
 		try{
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(libraryFile.getAbsolutePath()));
 			objectOutputStream.writeObject(library);
-			System.out.println("library has been has been told to write to"+libraryFile.getAbsolutePath());
+			System.out.println("library has been has been told to write to "+libraryFile.getAbsolutePath());
 			objectOutputStream.close();
 
 		} catch(IOException exception){
@@ -119,22 +115,38 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public Library readLibrary() throws ClassNotFoundException{
+	public void readLibrary(){
 		
 		try{
 			
 			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(libraryFile.getAbsolutePath()));
 			Library readLibrary = (Library) objectInputStream.readObject();
 			objectInputStream.close();
-			return readLibrary;
+			setLibrary(readLibrary);
 			
+		} catch(ClassNotFoundException exception) {
+			System.out.println("Library not found in file. Writing new one...");
+			library = new Library();
+			writeLibrary();
+		} catch(EOFException exception) {
+			System.out.println("Library not found in file. Writing new one...");
+			library = new Library();
+			writeLibrary();
 		} catch(IOException exception){
 			
 			exception.printStackTrace();
-			return null;
 
 		}
 		
+	}
+	public void setLibrary(Library lib) {
+		library = lib;
+	}
+	public Library getLibrary() {
+		if (library == null) {
+			readLibrary();
+		}
+		return library;
 	}
 	
 }

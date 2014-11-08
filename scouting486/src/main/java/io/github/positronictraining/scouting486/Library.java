@@ -10,17 +10,9 @@ public class Library implements Serializable{
 	
 	private ArrayList<Game> gameList = new ArrayList<Game>();
 	
-	public Library(){
-
-		// serialcomm.writeLibrary(this);
-		
-	}
 	
 	public void addGame(Game g){
-		
 		gameList.add(g);
-		serialcomm.writeLibrary(this); // write library to disk when it has been changed
-		
 	}
 	
 	public ArrayList<Game> getGameList(){

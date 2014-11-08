@@ -80,13 +80,8 @@ public class MainMenu extends JFrame implements ActionListener{
 		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
 			System.out.println("the team statistics button was pressed");
 			competitionGUI = new CompetitionGUI();
-			try {
-				competitionGUI.refreshCompetitionGameComboBox(serialComm.readLibrary().getGameList());
-				System.out.println("Apparently refreshed game list");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
+			System.out.println("Apparently refreshed game list");
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
