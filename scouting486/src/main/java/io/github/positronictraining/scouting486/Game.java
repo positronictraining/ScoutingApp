@@ -49,4 +49,8 @@ public class Game implements Serializable{
 		return gameName;
 		
 	}
+	
+	public boolean matches(Game g) {
+		return (this.year == g.year && this.gameName.equals(g.gameName));
+	}
 }

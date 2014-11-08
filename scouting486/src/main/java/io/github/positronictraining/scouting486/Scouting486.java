@@ -26,7 +26,7 @@ public class Scouting486 {
 		aerialAssist.getCompetitions().get(0).addRobot(1);
 		
 		serialcomm.newGameFile(aerialAssist.gameName);
-		serialcomm.writeGame(aerialAssist);	
+		serialcomm.writeGameIfNotExists(aerialAssist);
 	}
 	
 	private boolean initiate(){

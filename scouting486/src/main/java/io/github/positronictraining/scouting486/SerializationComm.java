@@ -48,19 +48,14 @@ public class SerializationComm implements Serializable{
 		gameFileDirectories.add(newFile.getAbsolutePath());
 	}
 	
-	public String findGameFileDirectory(String gameName){
-		
-		String desiredDirectory = null;
-		
-		for (int i = 0; i < gameFileDirectories.size(); i++){
-			
-			String directory = gameFileDirectories.get(i);
+	public String findGameFileDirectory(String gameName) {
+		for (String directory:gameFileDirectories){
 			if(directory.contains(gameName)){
-				desiredDirectory = directory;			
+				System.out.println("Game directory found! (" + directory + ")");
+				return directory;
 			}
 		}
-		
-		return desiredDirectory;	
+		return null;	
 	}
 	
 	public void writeGame(Game game){
@@ -83,11 +78,20 @@ public class SerializationComm implements Serializable{
 		
 	}
 	
+	public boolean writeGameIfNotExists(Game game) {
+		if (getLibrary().gameExists(game)) {
+			return false;
+		} else {
+			writeGame(game);
+			return true;
+		}
+	}
+	
 	public Game readGame(String filepath) throws ClassNotFoundException{
 		
 		try{
 			
-			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("filepath"));
+			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filepath));
 			Game game = (Game) objectInputStream.readObject();
 			System.out.println("program told to read game at file path "+filepath);
 			objectInputStream.close();
