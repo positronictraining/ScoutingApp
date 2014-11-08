@@ -82,6 +82,7 @@ public class MainMenu extends JFrame implements ActionListener{
 			competitionGUI = new CompetitionGUI();
 			try {
 				competitionGUI.refreshCompetitionGameComboBox(serialComm.readLibrary().getGameList());
+				System.out.println("Apparently refreshed game list");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

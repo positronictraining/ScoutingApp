@@ -44,4 +44,9 @@ public class Game implements Serializable{
 	public ArrayList<Point> getPointTypes(){//getter for pointTypes since competitions is private
 		return pointTypes;
 	}
+	
+	public String toString() {
+		return gameName;
+		
+	}
 }

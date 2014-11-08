@@ -65,6 +65,13 @@ public class SerializationComm implements Serializable{
 		
 		this.newGameFile(game.gameName);
 		
+		try {
+			readLibrary().addGame(game);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try{
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.findGameFileDirectory(game.gameName)));

@@ -12,13 +12,14 @@ public class Library implements Serializable{
 	
 	public Library(){
 
-		serialcomm.writeLibrary(this);
+		// serialcomm.writeLibrary(this);
 		
 	}
 	
-	public void addGame(){
+	public void addGame(Game g){
 		
-		
+		gameList.add(g);
+		serialcomm.writeLibrary(this); // write library to disk when it has been changed
 		
 	}
 	
