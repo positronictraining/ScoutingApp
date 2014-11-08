@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class SerializationComm implements Serializable{
 	
 	private ArrayList<String> gameFileDirectories = new ArrayList<String>();
-	private ArrayList<Game> games = new ArrayList<Game>();
+	
+	File libraryFile = new File("/scouting486/ScoutingData/libraryfile.ser");
 	
 	public ArrayList<String> getGameFileDirectories(){	
 		return gameFileDirectories;
@@ -50,25 +51,14 @@ public class SerializationComm implements Serializable{
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.findGameFileDirectory(game.gameName)));
 			objectOutputStream.writeObject(game);
 			System.out.println("game has been told to write to"+this.findGameFileDirectory(game.gameName));
-
-		} catch(IOException exception){
-
-			exception.printStackTrace();		
-		}
-	}
-	
-	public void writeLibrary()){
-		File newFile = new File("/scouting486/ScoutingData/libraryfile.ser");
-		try{
+			objectOutputStream.close();
 			
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(newFile.getAbsolutePath()));
-			objectOutputStream.writeObject(object);
-			System.out.println("object has been has been told to write to"+newFile.getAbsolutePath());
-
 		} catch(IOException exception){
 
-			exception.printStackTrace();		
+			exception.printStackTrace();
+			
 		}
+		
 	}
 	
 	public Game readGame(String filepath) throws ClassNotFoundException{
@@ -78,6 +68,7 @@ public class SerializationComm implements Serializable{
 			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("filepath"));
 			Game game = (Game) objectInputStream.readObject();
 			System.out.println("program told to read game at file path"+filepath);
+			objectInputStream.close();
 			return game;
 		
 		} catch(IOException exception){
@@ -86,8 +77,38 @@ public class SerializationComm implements Serializable{
 			return null;
 		}
 	}
+	
+	public void writeLibrary(Library library){
 
-	public void addNewGame;(){
+		try{
+			
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(libraryFile.getAbsolutePath()));
+			objectOutputStream.writeObject(library);
+			System.out.println("library has been has been told to write to"+libraryFile.getAbsolutePath());
+			objectOutputStream.close();
+
+		} catch(IOException exception){
+
+			exception.printStackTrace();		
+		}
+	}
+	
+	public Library readLibrary() throws ClassNotFoundException{
+		
+		try{
+			
+			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(libraryFile.getAbsolutePath()));
+			Library readLibrary = (Library) objectInputStream.readObject();
+			objectInputStream.close();
+			return readLibrary;
+			
+		} catch(IOException exception){
+			
+			exception.printStackTrace();
+			return null;
+
+		}
 		
 	}
+	
 }
