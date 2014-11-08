@@ -91,7 +91,7 @@ public class CompetitionGUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				String gameName = (String) competitionGameComboBox.getSelectedItem();
-				String gameDirectory = serialcomm.getGameFileDirectory(gameName);
+				String gameDirectory = serialcomm.findGameFileDirectory(gameName);
 				
 				try {
 					

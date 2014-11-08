@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class SerializationComm implements Serializable{
 	
 	private ArrayList<String> gameFileDirectories = new ArrayList<String>();
+	private ArrayList<Game> games = new ArrayList<Game>();
 	
 	public ArrayList<String> getGameFileDirectories(){	
 		return gameFileDirectories;
@@ -25,7 +26,7 @@ public class SerializationComm implements Serializable{
 		gameFileDirectories.add(newFile.getAbsolutePath());
 	}
 	
-	public String getGameFileDirectory(String gameName){
+	public String findGameFileDirectory(String gameName){
 		
 		String desiredDirectory = null;
 		
@@ -46,9 +47,9 @@ public class SerializationComm implements Serializable{
 		
 		try{
 			
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.getGameFileDirectory(game.gameName)));
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.findGameFileDirectory(game.gameName)));
 			objectOutputStream.writeObject(game);
-			System.out.println("game has been told to write to"+this.getGameFileDirectory(game.gameName));
+			System.out.println("game has been told to write to"+this.findGameFileDirectory(game.gameName));
 
 		} catch(IOException exception){
 
@@ -56,13 +57,13 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public void writeGivenObject(){
-		File newFile = new File("/scouting486/ScoutingData/serialData.ser");
+	public void writeLibrary()){
+		File newFile = new File("/scouting486/ScoutingData/libraryfile.ser");
 		try{
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(newFile.getAbsolutePath()));
-			objectOutputStream.writeObject();
-			System.out.println("game has been told to write to"+this.getGameFileDirectory(game.gameName));
+			objectOutputStream.writeObject(object);
+			System.out.println("object has been has been told to write to"+newFile.getAbsolutePath());
 
 		} catch(IOException exception){
 
@@ -84,5 +85,9 @@ public class SerializationComm implements Serializable{
 			exception.printStackTrace();
 			return null;
 		}
+	}
+
+	public void addNewGame;(){
+		
 	}
 }

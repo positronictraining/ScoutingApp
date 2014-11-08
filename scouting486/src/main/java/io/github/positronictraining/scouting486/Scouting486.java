@@ -9,10 +9,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Scouting486 {
+	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		MainMenu mainMenu = new MainMenu();
 		SerializationComm serialcomm = new SerializationComm();
+		Library library = new library();
+		
+		serai
 		
 		Game aerialAssist = new Game();
  		aerialAssist.year = 2014;
@@ -24,7 +28,10 @@ public class Scouting486 {
 		aerialAssist.getCompetitions().get(0).addRobot(1);
 		
 		serialcomm.newGameFile(aerialAssist.gameName);
-		serialcomm.writeGame(aerialAssist);
-		
+		serialcomm.writeGame(aerialAssist);	
+	}
+	
+	private boolean initiate(){
+		return true;
 	}
 }
