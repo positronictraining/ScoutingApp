@@ -90,7 +90,7 @@ public class CompetitionGUI extends JFrame{
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String gameName = (String) competitionGameComboBox.getSelectedItem();
+				String gameName = competitionGameComboBox.getSelectedItem().toString();
 				String gameDirectory = serialcomm.findGameFileDirectory(gameName);
 				
 				try {
@@ -107,7 +107,6 @@ public class CompetitionGUI extends JFrame{
 				}
 			}
 		});
-		
 		JLabel competitionNameLabel = new JLabel("Competition Name");	//New Label called lblNewCompetition
 		competitionNameLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		GridBagConstraints gbc_competitionNameLabel = new GridBagConstraints();
@@ -134,7 +133,7 @@ public class CompetitionGUI extends JFrame{
 		gbc_lblCompetitionGame.gridy = 4;
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
-		competitionGameComboBox = new JComboBox();					//new combo box
+		competitionGameComboBox = new JComboBox<Game>();					//new combo box
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
@@ -184,10 +183,11 @@ public class CompetitionGUI extends JFrame{
 	}
 	
 	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
-		this.competitionGameComboBox.removeAll();
-		for (int i=0; i<gameList.size(); i++){
-			this.competitionGameComboBox.addItem(gameList.get(i));
+		this.competitionGameComboBox.removeAll(); //
+		for (Game g:gameList) {
+			this.competitionGameComboBox.addItem(g); //
 		}
+		System.out.println("Refreshed Game List"); //
 	}
 	
 }

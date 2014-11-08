@@ -10,6 +10,7 @@ public class Game implements Serializable{
 	//VARIABLES
 	int year;
 	String gameName;
+	String gameFile;
 	private ArrayList<Competition> competitions = new ArrayList<Competition>();
 	private ArrayList<Point> pointTypes = new ArrayList<Point>();
 	

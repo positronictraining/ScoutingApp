@@ -46,6 +46,7 @@ public class SerializationComm implements Serializable{
 			e.printStackTrace();
 		}
 		gameFileDirectories.add(newFile.getAbsolutePath());
+		System.out.println("Added game file: " + newFile.getAbsolutePath());
 	}
 	
 	public String findGameFileDirectory(String gameName) {
