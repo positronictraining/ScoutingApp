@@ -16,7 +16,16 @@ public class SerializationComm implements Serializable{
 	private ArrayList<String> gameFileDirectories = new ArrayList<String>();
 	
 	// File libraryFile = new File("/scouting486/ScoutingData/libraryfile.ser");
-	File libraryFile = new File("../ScoutingData/libraryfile.ser");
+	private File libraryFile = new File("../ScoutingData/libraryfile.ser");
+	
+	public SerializationComm() {
+		try {
+			libraryFile.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public ArrayList<String> getGameFileDirectories(){	
 		return gameFileDirectories;
@@ -26,6 +35,12 @@ public class SerializationComm implements Serializable{
 		
 		// File newFile =  new File("/scouting486/ScoutingData/"+gameName+".ser");
 		File newFile =  new File("../ScoutingData/"+gameName+".ser");
+		try {
+			newFile.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		gameFileDirectories.add(newFile.getAbsolutePath());
 	}
 	
