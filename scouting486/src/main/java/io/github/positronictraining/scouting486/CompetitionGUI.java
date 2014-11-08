@@ -134,6 +134,7 @@ public class CompetitionGUI extends JFrame{
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
 		competitionGameComboBox = new JComboBox();					//new combo box
+		refreshCompetitionGameComboBox(serialcomm.getLibrary().getGameList());
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
