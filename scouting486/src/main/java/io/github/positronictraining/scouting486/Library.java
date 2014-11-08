@@ -23,7 +23,7 @@ public class Library implements Serializable{
 	}
 	
 	public boolean gameExists(Game g) {
-		for (Game game:gameList){
+		for (Game game:gameList) {
 			if (game.matches(g)) {
 				return true;
 			}
