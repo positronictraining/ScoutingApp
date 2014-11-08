@@ -14,7 +14,6 @@ public class Game implements Serializable{
 	private ArrayList<Competition> competitions = new ArrayList<Competition>();
 	private ArrayList<Point> pointTypes = new ArrayList<Point>();
 	
-	
 	//METHODS
 
 	public void addNewPointType(String pointName, String pointPeriod, int pointValue ){ //adds a new pointType for storage

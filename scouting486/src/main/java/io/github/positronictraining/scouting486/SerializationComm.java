@@ -10,15 +10,14 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
-
-public class SerializationComm implements Serializable{
+public class SerializationComm implements Serializable {
 	
 	private ArrayList<String> gameFileDirectories = new ArrayList<String>();
 	
 	// File libraryFile = new File("/scouting486/ScoutingData/libraryfile.ser");
 	private File libraryFile = new File("ScoutingData/libraryfile.ser");
 	private Library library;
+	private ArrayList games;
 	
 	public SerializationComm() {
 		new File("ScoutingData/").mkdirs();
@@ -30,12 +29,11 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public ArrayList<String> getGameFileDirectories(){	
+	public ArrayList<String> getGameFileDirectories() {	
 		return gameFileDirectories;
 	}
 	
-	public void newGameFile(String gameName){
-		
+	public void newGameFile(String gameName) {
 		// File newFile =  new File("/scouting486/ScoutingData/"+gameName+".ser");
 		File newFile =  new File("ScoutingData/"+gameName+".ser");
 		new File("ScoutingData/").mkdirs();
@@ -59,7 +57,7 @@ public class SerializationComm implements Serializable{
 		return null;	
 	}
 	
-	public void writeGame(Game game){
+	public void writeGame(Game game) {
 		
 		this.newGameFile(game.gameName);
 		getLibrary().addGame(game);
@@ -88,7 +86,7 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public Game readGame(String filepath) throws ClassNotFoundException{
+	public Game readGame(String filepath) throws ClassNotFoundException {
 		
 		try{
 			
@@ -105,7 +103,7 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public void writeLibrary(){
+	public void writeLibrary() {
 
 		try{
 			
@@ -120,7 +118,7 @@ public class SerializationComm implements Serializable{
 		}
 	}
 	
-	public void readLibrary(){
+	public void readLibrary() {
 		
 		try{
 			
