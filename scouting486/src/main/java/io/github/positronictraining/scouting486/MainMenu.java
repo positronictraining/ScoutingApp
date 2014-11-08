@@ -25,6 +25,8 @@ public class MainMenu extends JFrame implements ActionListener{
 	private CompetitionGUI competitionGUI;
 	private MatchGUI newMatch;
 	
+	private SerializationComm serialComm = new SerializationComm();
+	
 	public MainMenu() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets up main menu frame
@@ -78,7 +80,12 @@ public class MainMenu extends JFrame implements ActionListener{
 		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
 			System.out.println("the team statistics button was pressed");
 			competitionGUI = new CompetitionGUI();
-			competitionGUI.refreshCompetitionGameComboBox(gameList);
+			try {
+				competitionGUI.refreshCompetitionGameComboBox(serialComm.readLibrary().getGameList());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");

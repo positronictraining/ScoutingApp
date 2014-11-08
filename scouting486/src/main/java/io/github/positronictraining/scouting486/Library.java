@@ -21,5 +21,9 @@ public class Library implements Serializable{
 		
 		
 	}
+	
+	public ArrayList<Game> getGameList(){
+		return gameList;
+	}
 
 }

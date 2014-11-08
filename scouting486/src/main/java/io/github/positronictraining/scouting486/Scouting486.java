@@ -14,9 +14,7 @@ public class Scouting486 {
 		
 		MainMenu mainMenu = new MainMenu();
 		SerializationComm serialcomm = new SerializationComm();
-		Library library = new library();
-		
-		serai
+		Library library = new Library();
 		
 		Game aerialAssist = new Game();
  		aerialAssist.year = 2014;
