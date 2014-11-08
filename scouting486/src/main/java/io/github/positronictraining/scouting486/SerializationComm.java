@@ -19,6 +19,7 @@ public class SerializationComm implements Serializable{
 	private File libraryFile = new File("../ScoutingData/libraryfile.ser");
 	
 	public SerializationComm() {
+		new File("../ScoutingData/").mkdirs();
 		try {
 			libraryFile.createNewFile();
 		} catch (IOException e) {
@@ -35,6 +36,7 @@ public class SerializationComm implements Serializable{
 		
 		// File newFile =  new File("/scouting486/ScoutingData/"+gameName+".ser");
 		File newFile =  new File("../ScoutingData/"+gameName+".ser");
+		new File("../ScoutingData/").mkdirs();
 		try {
 			newFile.createNewFile();
 		} catch (IOException e) {
