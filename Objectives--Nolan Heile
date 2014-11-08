@@ -2,7 +2,7 @@ OBJECTIVES
 
 -compatible with iOS & android- an easy way to do this might be to make it a webapp, or do whatever sneaky thing that GBA4iOS does.
 
--Support pictures of robots
+-Support pictures of robots -- Can be implemented with sneakernet, or with centralized server. Possibly bluetooth? Big pictures would be slow, though.
 
 -Several categories for text info about robots- Stuff like “type of shooter” “movement skill” “overall ranking” “other comments”. These can be finalized after the game is announced.
 
@@ -10,6 +10,6 @@ OBJECTIVES
 
 -if you have time, a way to record points in a match by type of point would be nice. Ideally this would be a screen with several buttons for each type of point.
 
--easy way to transfer data onto other computers/phones- bluetooth? NFC?
+-easy way to transfer data onto other computers/phones- bluetooth? NFC? -- Primary options we're looking at are QR codes and bluetooth, possibly sneakernet
 
 -deal with multiple entries for the same robot in a way that doesn’t delete information- feel free to put in a “delete entry” option, but I don’t want anything autodeleted if a new entry for the same robot comes in
