@@ -47,10 +47,42 @@
 
       <section id="main_content">
         <h1>
-<a id="scouting486" class="anchor" href="#scouting486" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scouting486</h1>
+<a id="a-better-way-to-scout" class="anchor" href="#a-better-way-to-scout" aria-hidden="true"><span class="octicon octicon-link"></span></a>A better way to scout.</h1>
+
+<p>Our goal with this scouting app is to improve both the data collection and analysis stages in our team's scouting process. In the past, we've used paper or excel sheets that require manual aggregation of collected data, which is difficult to collect accurately and often subjective.</p>
 
 <h1>
-<a id="this-is-our-scouting-app--in-development" class="anchor" href="#this-is-our-scouting-app--in-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>This is our scouting app--in development</h1>
+<a id="simple-flexible-cross-platform" class="anchor" href="#simple-flexible-cross-platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple. Flexible. Cross-platform.</h1>
+
+<p>Once complete, our scouting app should provide an interface that facilitates quick and easy data collection. This will allow our scouting team to focus on the matches, making their job both easier and more enjoyable. The app will run first on all desktop systems (Windows, Mac, Linux) and then be ported to Android. Our eventual plan is to distribute binaries for iOS as well, although this will be further down the road because we can't just copy and paste half the code like we can for Android.</p>
+
+<p>A major focus of our app is providing easy extensibility for future seasons. This is particularly crucial for our team as our programming team is almost entirely student-led, which creates a lot of uncertainty for the future. We aim to provide a mechanism within the app or in a simple configuration file to define a new game with limited time and/or programming experience.</p>
+
+<h1>
+<a id="current-status" class="anchor" href="#current-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Status</h1>
+
+<p>This project is still very new, and as such it is very, very incomplete at the time of writing. It is our intention to finish laying the groundwork before the game for 2015 is announced and to continue improving the usability and functionality of the app once our robot has been bagged and tagged.</p>
+
+<h1>
+<a id="data-transfer" class="anchor" href="#data-transfer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Transfer</h1>
+
+<p>One of the major considerations when writing an FRC scouting app is how to get all of the data in one place. Some teams use pen and paper and manually compile the data, others use laptops and a wired network, and others have various wireless methods of communication which may or may not violate the ban on WiFi at competitions.</p>
+
+<h2>
+<a id="qr-codes" class="anchor" href="#qr-codes" aria-hidden="true"><span class="octicon octicon-link"></span></a>QR Codes</h2>
+
+<p>QR codes are a great opportunity with limited functionality. I've seen them used before, and they're definitely a simple and effective way to transfer small amounts of data. As we move into moving large amounts of data and potentially including pictures of robots in the scouting process, however, QR codes quickly begin to show their limitations.</p>
+
+<h2>
+<a id="sneakernet" class="anchor" href="#sneakernet" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sneakernet</h2>
+
+<p>In our discussions on data transfer, the most interesting and promising option has been a sneakernet. Unfortunately, this is also the most complicated option to implement. A sneakernet is essentially a system through which messages can be transmitted without any centralized wireless networking. It allows a mesh network of devices to share messages with each other in the hope that the messages can eventually reach their intended recipients through many hops from node to node. This typically relies on ad-hoc WiFi networks, but it should be possible to implement using Bluetooth.</p>
+
+<h3>
+<a id="platform-differences" class="anchor" href="#platform-differences" aria-hidden="true"><span class="octicon octicon-link"></span></a>Platform Differences</h3>
+
+<p>The sneakernet will either automatically find devices running the app and pass off the data without any user interaction or require some kind of manual pairing. Because manually pairing bluetooth devices is an immense pain and requires traversing all kinds of crazy menus, we'll attempt to smooth things over a bit if we go this route. For file transfers between two Android devices, the Android Beam API should allow us to quickly and easily transfer data over bluetooth using NFC to establish the initial connection. Because iPhones don't have a similar feature, we'll have to explore alternatives for automatic pairing if it's even possible. If it is, QR codes sound like a good first stage.
+Transferring data to computers over bluetooth can potentially also be a problem, and in fact there will likely be a lot of variance in the bluetooth architecture across all of the laptops team members bring to competitions. Because of this, we're at least considering making an Android device the final endpoint and simply transferring a file from it to a laptop.</p>
       </section>
 
       <footer>
