@@ -14,6 +14,8 @@ public class Match implements Serializable{
 	private String gameComment;
 	private ArrayList<Point> pointsScored = new ArrayList<Point>();
 	private ArrayList<Point> penalties = new ArrayList<Point>();
+	public boolean redWon = false;
+	public boolean blueWon = false;
 	
 	//METHODS
 	public void setRedAndBlueAlliances(int red1, int red2, int red3, int blue1, int blue2, int blue3){ //sets matches for the team
@@ -34,6 +36,15 @@ public class Match implements Serializable{
 		}
 		else{
 			blueAllianceScore = blueAllianceScore + ((Point)game.getPointTypes().toArray()[pointTypeIndex]).getPointValue();
+		}
+	}
+	
+	public void gameEnd(){
+		
+		if (redAllianceScore > blueAllianceScore ){
+			redWon = true;
+		}else{
+			blueWon = true;
 		}
 	}
 	

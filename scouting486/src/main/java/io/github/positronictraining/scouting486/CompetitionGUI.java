@@ -191,11 +191,29 @@ public class CompetitionGUI extends JFrame {
 	
 	public void refreshDataTable(){
 		
+		String[] columnNames = {
+				"Team",
+				"Wins",
+				"Losses",
+				"Total Points",
+				"Total Penalties"
+		};
+		Competition competition = (Competition) competitionList.getSelectedValue();
+		Object[][] data = new Object[competition.robots.size()][5];
+		for ( int i = 0 ; i < competition.robots.size() ; i++ ){
+			data[i] = competition.teamStats(competition.robots.get(i).teamNumber);
+		}
+		dataTable = new JTable(data,columnNames);
 	}
 	
-	private Object[] newTableRow(Game game, Robot robot){
-		return null;
+	private Object[] newTableRow(int index){
+		
+		Competition competition = (Competition) competitionList.getSelectedValue();
+		Robot robot = competition.robots.get(index);
+		return competition.teamStats(robot.teamNumber);
+		
 	}
+
 	
 	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
 		this.competitionGameComboBox.removeAll(); //

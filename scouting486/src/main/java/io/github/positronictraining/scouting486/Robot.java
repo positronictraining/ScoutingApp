@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Robot implements Serializable{
 	
+	int numberOfTeamTraits = 4; //need this for data table
 	int teamNumber;
 	String playerType;
 	ArrayList<Point> pointsScored = new ArrayList<Point>();

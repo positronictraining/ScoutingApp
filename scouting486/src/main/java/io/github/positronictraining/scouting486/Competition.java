@@ -18,6 +18,52 @@ public class Competition implements Serializable{
 	
 	//METHODS
 	
+	public Object[] teamStats(int team){
+		
+		Object[] teamStats = new Object[4];
+		
+		int teamWins = 0;
+		int teamLosses = 0;
+		int totalPoints = 0;
+		int totalPenalties = 0;
+		
+		for ( int i=0; i< matches.size(); i++){
+			for(int j = 0; j<3; j++){
+				
+				for( int k=0; k < matches.get(i).getPointsScored().size(); k++){
+					if (team == matches.get(i).getPointsScored().get(k).getScoringTeam()){
+						totalPoints = totalPoints + matches.get(i).getPointsScored().get(k).getPointValue();
+					}
+				}
+				
+				for( int k=0; k < matches.get(i).getPenalties().size(); k++){
+					if (team == matches.get(i).getPenalties().get(k).getScoringTeam()){
+						totalPenalties = totalPenalties + matches.get(i).getPenalties().get(k).getPointValue();
+					}
+				}
+				
+				if (team == matches.get(i).blueAlliance[j]){					
+					if(matches.get(i).blueWon){
+						teamWins++;
+					}else{
+						teamLosses++;
+					}
+				}else if(team == matches.get(i).redAlliance[j]){
+					if(matches.get(i).redWon){
+						teamWins++;
+					}else{
+						teamLosses++;
+					}
+				}
+			}
+		}
+		teamStats[0] = teamWins;
+		teamStats[1] = teamLosses;
+		teamStats[2] = totalPoints;
+		teamStats[3] = totalPenalties;
+		return teamStats;
+	}
+	
 	public void addRobot(int teamNumber){ //adds a new robot with a specified team number to the robots in the competition
 		Robot newRobot = new Robot();
 		newRobot.teamNumber = teamNumber;
