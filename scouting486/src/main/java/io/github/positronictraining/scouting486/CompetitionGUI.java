@@ -19,6 +19,7 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.JLabel;
 
+import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Font;
 
@@ -46,6 +47,7 @@ public class CompetitionGUI extends JFrame {
 	public JTextField endDateTxtFld;
 	public JComboBox competitionGameComboBox;
 	public JList competitionList;
+	public JList gameList;
 
 	private SerializationComm serialcomm = new SerializationComm();
 	
@@ -64,6 +66,9 @@ public class CompetitionGUI extends JFrame {
 		
 		dataTable = new JTable(); //makes a data-table
 		tabbedPane.addTab("Competition Statistics", null, dataTable, null); //calls that pane "Competition Statistics and adds the data-table to the tabs
+		
+		gameList = new JList();
+		tabbedPane.addTab("Game List",null,gameList,null);
 		
 		competitionList = new JList(); //makes a competition-list JList
 		tabbedPane.addTab("Competitions List", null, competitionList, null); //calls that pane "Competitions List and adds the JList to the tabs
@@ -182,12 +187,21 @@ public class CompetitionGUI extends JFrame {
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
 	
+	public void refreshDataTable(){
+		
+	}
+	
+	private String[] newTabelRow(Game game, Robot robot){
+		
+		return null;
+	}
+	
 	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
 		this.competitionGameComboBox.removeAll(); //
 		for (Game g:gameList) {
 			this.competitionGameComboBox.addItem(g); //
 		}
+//		competitionGameComboBox = new JComboBox(gameList.toArray());
 		System.out.println("Refreshed Game List"); //
 	}
-	
 }
