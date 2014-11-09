@@ -56,6 +56,7 @@ public class CompetitionGUI extends JFrame {
 	public CompetitionGUI() { //initializes and shows a new overview page whenever a new instance of Overview is made
 		initialize();
 		this.setVisible(true);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 	private void initialize() { //Makes a new GUI for the overview
