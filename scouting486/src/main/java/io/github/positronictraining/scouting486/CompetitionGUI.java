@@ -213,7 +213,6 @@ public class CompetitionGUI extends JFrame {
 		return competition.teamStats(robot.teamNumber);
 		
 	}
-
 	
 	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
 		this.competitionGameComboBox.removeAll(); //
