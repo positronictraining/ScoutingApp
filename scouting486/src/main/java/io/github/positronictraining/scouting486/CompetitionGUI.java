@@ -38,7 +38,6 @@ import java.util.ArrayList;
 //TODO: get rid of diagnositcs
 
 public class CompetitionGUI extends JFrame {
-	
 	//FRAME COMPONENTS
 	private static final long serialVersionUID = 1L;
 	public JTable dataTable;
