@@ -6,4 +6,5 @@ deploy:
   file: "/home/travis/build/positronictraining/ScoutingApp/scouting486/target/scouting486-0.0.1-SNAPSHOT.jar"
   skip_cleanup: true
   on:
+    tags: true
     all_branches: true
