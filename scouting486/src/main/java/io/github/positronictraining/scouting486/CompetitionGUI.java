@@ -191,8 +191,7 @@ public class CompetitionGUI extends JFrame {
 		
 	}
 	
-	private String[] newTabelRow(Game game, Robot robot){
-		
+	private Object[] newTableRow(Game game, Robot robot){
 		return null;
 	}
 	
