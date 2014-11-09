@@ -38,6 +38,7 @@ import java.util.ArrayList;
 //TODO: get rid of diagnositcs
 
 public class CompetitionGUI extends JFrame {
+	
 	//FRAME COMPONENTS
 	private static final long serialVersionUID = 1L;
 	public JTable dataTable;
@@ -133,7 +134,6 @@ public class CompetitionGUI extends JFrame {
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
 		competitionGameComboBox = new JComboBox();					//new combo box
-		refreshCompetitionGameComboBox(serialcomm.getLibrary().getGameList());
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
