@@ -103,6 +103,7 @@ public class CompetitionGUI extends JFrame {
 					
 					Game game = serialcomm.readGame(gameDirectory);
 					game.addNewCompetition(competitionNameTxtFld.getText(),game,startDateTxtFld.getText(),endDateTxtFld.getText());
+					serialcomm.writeGame(game);
 					
 					competitionNameTxtFld.setText("");
 					startDateTxtFld.setText("");

@@ -16,6 +16,20 @@ public class Game implements Serializable{
 	
 	//METHODS
 
+	public Game(String gameName) {
+		this.gameName = gameName;
+		this.gameFile = "ScoutingData/"+gameName+".ser";
+		File newFile =  new File(gameFile);
+		new File("ScoutingData/").mkdirs();
+		try {
+			newFile.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Added game file: " + newFile.getAbsolutePath());
+	}
+	
 	public void addNewPointType(String pointName, String pointPeriod, int pointValue ){ //adds a new pointType for storage
 		Point newPointType = new Point();
 		newPointType.setPointType(pointName, pointPeriod, pointValue);
@@ -52,5 +66,13 @@ public class Game implements Serializable{
 	
 	public boolean matches(Game g) {
 		return (this.year == g.year && this.gameName.equals(g.gameName));
+	}
+	
+	public void setGameFile(String gameFile) {
+		this.gameFile = gameFile;
+	}
+	
+	public String getGameFile() {
+		return gameFile;
 	}
 }
