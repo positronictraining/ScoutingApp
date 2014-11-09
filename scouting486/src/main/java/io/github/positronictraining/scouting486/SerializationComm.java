@@ -33,7 +33,7 @@ public class SerializationComm implements Serializable {
 		return gameFileDirectories;
 	}
 	
-	public void newGameFile(String gameName) {
+	/* public void newGameFile(String gameName) {
 		// File newFile =  new File("/scouting486/ScoutingData/"+gameName+".ser");
 		File newFile =  new File("ScoutingData/"+gameName+".ser");
 		new File("ScoutingData/").mkdirs();
@@ -46,20 +46,28 @@ public class SerializationComm implements Serializable {
 		gameFileDirectories.add(newFile.getAbsolutePath());
 		System.out.println("Added game file: " + newFile.getAbsolutePath());
 	}
+	*/
 	
 	public String findGameFileDirectory(String gameName) {
+		/*System.out.println("Finding directory for game: " + gameName);
 		for (String directory:gameFileDirectories){
+			System.out.println("File " + directory + " doesn't match game: " + gameName);
 			if(directory.contains(gameName)){
 				System.out.println("Game directory found! (" + directory + ")");
 				return directory;
 			}
 		}
-		return null;	
+		*/
+		for (Game g:this.getLibrary().getGameList()) {
+			if (g.gameName.equals(gameName)) {
+				return g.gameFile;
+			}
+		}
+		return null;
 	}
 	
 	public void writeGame(Game game) {
 		
-		this.newGameFile(game.gameName);
 		getLibrary().addGame(game);
 		writeLibrary();
 		try{
