@@ -3,7 +3,7 @@ before_install: cd scouting486
 deploy:
   provider: releases
   api-key: "$GithubOauthToken"
-  file: "target/scouting486-0.0.1-SNAPSHOT"
+  file: "/home/travis/build/tmas/ScoutingApp/scouting486/target/scouting486-0.0.1-SNAPSHOT.jar"
   skip_cleanup: true
   on:
     all_branches: true
