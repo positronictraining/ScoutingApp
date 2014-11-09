@@ -2,9 +2,8 @@ language: java
 before_install: cd scouting486
 deploy:
   provider: releases
-  api-key: "GithubOauthToken"
+  api-key: "$GithubOauthToken"
   file: "target/scouting486-0.0.1-SNAPSHOT"
   skip_cleanup: true
-  on: 
-    tags: true
+  on:
     all_branches: true
