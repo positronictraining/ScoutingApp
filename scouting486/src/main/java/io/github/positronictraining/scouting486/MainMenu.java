@@ -97,6 +97,7 @@ public class MainMenu extends JFrame implements ActionListener{
 			System.out.println("the team statistics button was pressed");
 			competitionGUI = new CompetitionGUI();
 			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
+			competitionGUI.refreshGameList((Game[]) serialComm.getLibrary().getGameList().toArray());
 			competitionGUI.refreshDataTable();
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed

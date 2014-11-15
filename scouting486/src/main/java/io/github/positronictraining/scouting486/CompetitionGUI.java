@@ -189,6 +189,10 @@ public class CompetitionGUI extends JFrame {
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
 	
+	public void refreshGameList(Game[] gameArray){
+		gameList = new JList(gameArray);
+	}
+	
 	public void refreshDataTable(){
 		
 		String[] columnNames = {
@@ -220,6 +224,6 @@ public class CompetitionGUI extends JFrame {
 			this.competitionGameComboBox.addItem(g); //
 		}
 //		competitionGameComboBox = new JComboBox(gameList.toArray());
-		System.out.println("Refreshed Game List"); //
+		System.out.println("Refreshed Combo BoxGame List"); //
 	}
 }

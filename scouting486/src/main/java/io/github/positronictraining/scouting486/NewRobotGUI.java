@@ -13,7 +13,7 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class NewRobot {private JPanel contentPane;
+public class NewRobotGUI {private JPanel contentPane;
 private final JTextField textField = new JTextField();
 private final JTextField textField_1 = new JTextField();
 
@@ -24,7 +24,7 @@ public static void main(String[] args) {
 	EventQueue.invokeLater(new Runnable() {
 		public void run() {
 			try {
-				NewRobot frame = new NewRobot();
+				NewRobotGUI frame = new NewRobotGUI();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -41,7 +41,7 @@ protected void setVisible(boolean b) {
 /**
  * Create the frame.
  */
-public NewRobot() {
+public NewRobotGUI() {
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setBounds(100, 100, 450, 300);
 	contentPane = new JPanel();
