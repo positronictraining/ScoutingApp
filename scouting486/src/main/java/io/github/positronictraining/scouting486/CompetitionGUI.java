@@ -65,7 +65,7 @@ public class CompetitionGUI extends JFrame {
 	private void initialize() { //Makes a new GUI for the overview
 		
 		this.setBounds(100, 100, 500, 400);
-		
+		this.setTitle("Scouting 486 - Competition GUI");
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);	//adds a tabs mechanic to the GUI
 		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
@@ -89,7 +89,7 @@ public class CompetitionGUI extends JFrame {
 		gbc_lblNewCompetition.gridx = 0;
 		gbc_lblNewCompetition.gridy = 0;
 		panel.add(lblNewCompetition, gbc_lblNewCompetition);
-		JButton newCompetitionBtn = new JButton("Create New Competition");	//New JButton called newCompetitionBtn
+		final JButton newCompetitionBtn = new JButton("Create New Competition");	//New JButton called newCompetitionBtn
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -167,6 +167,11 @@ public class CompetitionGUI extends JFrame {
 		gbc_endDateTxtFld.insets = new Insets(0, 0, 5, 0);
 		gbc_endDateTxtFld.gridx = 0;
 		gbc_endDateTxtFld.gridy = 9;
+		endDateTxtFld.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
+			public void actionPerformed(ActionEvent arg0) {
+				newCompetitionBtn.doClick();
+			}
+		});
 		panel.add(endDateTxtFld, gbc_endDateTxtFld);
 		
 		endDateTxtFld.setColumns(10);								//new text field

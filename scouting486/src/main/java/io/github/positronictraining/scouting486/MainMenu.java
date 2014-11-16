@@ -12,6 +12,21 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
+import java.awt.Component;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class MainMenu extends JFrame implements ActionListener{
 	/**
@@ -31,9 +46,13 @@ public class MainMenu extends JFrame implements ActionListener{
 	
 	private SerializationComm serialComm;
 	private JButton btnSettings;
+	private JPanel panel;
+	private JToolBar toolBar;
+	private JPanel panel_1;
 	
 	public MainMenu(SerializationComm serialComm) {
 		this.serialComm = serialComm;
+		this.setTitle("Scouting486 - Main Menu");
 		try {
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 		} catch (ClassNotFoundException e) {
@@ -54,52 +73,44 @@ public class MainMenu extends JFrame implements ActionListener{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
 		
-		btnTeamStatistics = new JButton("Team Statistics");	//adds team stats button
-		GridBagConstraints gbc_btnTeamStatistics = new GridBagConstraints();
-		gbc_btnTeamStatistics.insets = new Insets(0, 0, 5, 0);
-		gbc_btnTeamStatistics.gridx = 1;
-		gbc_btnTeamStatistics.gridy = 1;
-		contentPane.add(btnTeamStatistics, gbc_btnTeamStatistics);
+		panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		
-		btnNewMatch = new JButton("New Match");	//adds new match button
-		GridBagConstraints gbc_btnNewMatch = new GridBagConstraints();
-		gbc_btnNewMatch.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewMatch.gridx = 1;
-		gbc_btnNewMatch.gridy = 2;
-		contentPane.add(btnNewMatch, gbc_btnNewMatch);
+		panel = new JPanel();
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(panel_1, BorderLayout.NORTH);
 		
-		btnNewRobot = new JButton("New Robot");	//adds new robot button
-		GridBagConstraints gbc_btnNewRobot = new GridBagConstraints();
-		gbc_btnNewRobot.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewRobot.gridx = 1;
-		gbc_btnNewRobot.gridy = 3;
-		contentPane.add(btnNewRobot, gbc_btnNewRobot);
+		toolBar = new JToolBar();
+		panel_1.add(toolBar);
+		toolBar.setFloatable(false);
 		
-		btnQrCode = new JButton("QR Code");		//adds qr code button
-		GridBagConstraints gbc_btnQrCode = new GridBagConstraints();
-		gbc_btnQrCode.insets = new Insets(0, 0, 5, 0);
-		gbc_btnQrCode.gridx = 1;
-		gbc_btnQrCode.gridy = 4;
-		contentPane.add(btnQrCode, gbc_btnQrCode);
-		
-		btnSettings = new JButton("Settings");
-		GridBagConstraints gbc_btnSettings = new GridBagConstraints();
-		gbc_btnSettings.gridx = 1;
-		gbc_btnSettings.gridy = 5;
-		contentPane.add(btnSettings, gbc_btnSettings);
+		btnTeamStatistics = new JButton("Team Statistics");
+		toolBar.add(btnTeamStatistics);
 		
 		btnTeamStatistics.addActionListener(this);		//adds action listeners for all buttons
-		btnNewMatch.addActionListener(this);
-		btnNewRobot.addActionListener(this);
+		
+		btnNewMatch = new JButton("New Match");
+		btnNewMatch.setToolTipText("Create a new match");
+		toolBar.add(btnNewMatch);
+		
+		btnNewRobot = new JButton("New Robot");
+		btnNewRobot.setToolTipText("Create a new robot");
+		toolBar.add(btnNewRobot);
+		
+		btnQrCode = new JButton("QR Code");
+		btnQrCode.setToolTipText("Not implemented yet");
+		btnQrCode.setEnabled(false);
+		toolBar.add(btnQrCode);
 		btnQrCode.addActionListener(this);
+		
+		btnSettings = new JButton("Settings");
+		btnSettings.setToolTipText("Manage settings");
+		toolBar.add(btnSettings);
 		btnSettings.addActionListener(this);
+		btnNewRobot.addActionListener(this);
+		btnNewMatch.addActionListener(this);
+		contentPane.add(panel);
 		
 		setVisible(true); 					//makes the frame visible
 	}
