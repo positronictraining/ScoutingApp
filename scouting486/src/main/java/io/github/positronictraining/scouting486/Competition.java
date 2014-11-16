@@ -87,4 +87,7 @@ public class Competition implements Serializable{
 	public ArrayList<Match> getMatches(){ //returns matches list because matches is a private variable
 		return matches;
 	}
+	public String toString() {
+		return competitionName;
+	}
 }

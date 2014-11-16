@@ -60,7 +60,7 @@ public class Game implements Serializable{
 	}
 	
 	public String toString() {
-		return gameName;
+		return gameName + "[" + year + "]";
 		
 	}
 	
