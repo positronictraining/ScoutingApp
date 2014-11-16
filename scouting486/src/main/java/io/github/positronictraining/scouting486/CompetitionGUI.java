@@ -30,6 +30,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JToolBar;
+import javax.swing.JInternalFrame;
 
 //TODO: implement text field and competition button to add data
 //TODO: implement data table to actually display data
@@ -47,6 +49,7 @@ public class CompetitionGUI extends JFrame {
 	public JTextField startDateTxtFld;
 	public JTextField endDateTxtFld;
 	public JComboBox competitionGameComboBox;
+	public JComboBox gameSelect, competitionSelect;
 	public JList competitionList;
 	public JList gameList;
 
@@ -63,17 +66,33 @@ public class CompetitionGUI extends JFrame {
 		
 		this.setBounds(100, 100, 500, 400);	//Sets the size of the frame
 		
+		JToolBar toolBar = new JToolBar();
+		getContentPane().add(toolBar, BorderLayout.NORTH);
+		
+		gameSelect = new JComboBox(serialcomm.getLibrary().getGameArray());
+		if (serialcomm.getLibrary().gameSelected()) {
+			gameSelect.setSelectedItem(serialcomm.getLibrary().getSelectedGame());
+		} else {
+			gameSelect.setSelectedIndex(0);
+			serialcomm.getLibrary().setSelectedGame((Game)gameSelect.getSelectedItem());
+		}
+		toolBar.add(gameSelect);
+		
+		ArrayList<Competition> compList = serialcomm.getLibrary().getSelectedGame().getCompetitions();
+		competitionSelect = new JComboBox(compList.toArray(new Competition[compList.size()]));
+		toolBar.add(competitionSelect);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);	//adds a tabs mechanic to the GUI
-		this.getContentPane().add(tabbedPane, BorderLayout.CENTER); //specifies that it should be front and center
+		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		
+		competitionList = new JList(); //makes a competition-list JList
+		tabbedPane.addTab("Competitions List", null, competitionList, null); //calls that pane "Competitions List and adds the JList to the tabs
 		
 		dataTable = new JTable(); //makes a data-table
 		tabbedPane.addTab("Competition Statistics", null, dataTable, null); //calls that pane "Competition Statistics and adds the data-table to the tabs
 		
 		gameList = new JList();
 		tabbedPane.addTab("Game List",null,gameList,null);
-		
-		competitionList = new JList(); //makes a competition-list JList
-		tabbedPane.addTab("Competitions List", null, competitionList, null); //calls that pane "Competitions List and adds the JList to the tabs
 		
 		JPanel panel = new JPanel(); //makes a new panel (to eventually put on a new tab)
 		tabbedPane.addTab("New Competition", null, panel, null); //adds that new panel to a new tab called 
@@ -233,5 +252,21 @@ public class CompetitionGUI extends JFrame {
 		}
 //		competitionGameComboBox = new JComboBox(gameList.toArray());
 		System.out.println("Refreshed Combo BoxGame List"); //
+	}
+	public void refreshGameBox(ArrayList<Game> gameList){
+		this.gameSelect.removeAll(); //
+		for (Game g:gameList) {
+			this.gameSelect.addItem(g); //
+		}
+//		competitionGameComboBox = new JComboBox(gameList.toArray());
+		System.out.println("Refreshed Game Selection Menu"); //
+	}
+	public void refreshCompetitionBox(ArrayList<Competition> compList){
+		this.gameSelect.removeAll(); //
+		for (Competition c:compList) {
+			this.competitionSelect.addItem(c); //
+		}
+//		competitionGameComboBox = new JComboBox(gameList.toArray());
+		System.out.println("Refreshed Game Selection Menu"); //
 	}
 }

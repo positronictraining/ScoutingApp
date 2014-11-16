@@ -10,6 +10,11 @@ public class Library implements Serializable{
 	
 	private ArrayList<Game> gameList = new ArrayList<Game>();
 	
+	private Competition selectedCompetition;
+	private Game selectedGame;
+	private boolean gameSelected = false;
+	private boolean competitionSelected = true;
+	
 	
 	public void addGame(Game g){
 		gameList.add(g);
@@ -37,6 +42,28 @@ public class Library implements Serializable{
 
 	public Game[] getGameArray(){
 		return gameList.toArray(new Game[gameList.size()]);
+	}
+	
+	public void setSelectedGame(Game g) {
+		selectedGame = g;
+		gameSelected = true;
+	}
+	
+	public Game getSelectedGame() {
+		return selectedGame;
+	}
+	public Competition getSelectedCompetition() {
+		return selectedCompetition;
+	}
+	public void setSelectedCompetition(Competition c) {
+		selectedCompetition = c;
+		gameSelected = true;
+	}
+	public boolean gameSelected() {
+		return gameSelected;
+	}
+	public boolean competitionSelected() {
+		return competitionSelected;
 	}
 
 }
