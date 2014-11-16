@@ -36,7 +36,7 @@ public class Library implements Serializable{
 	}
 
 	public Game[] getGameArray(){
-		return (Game[]) gameList.toArray();
+		return gameList.toArray(new Game[gameList.size()]);
 	}
 
 }

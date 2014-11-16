@@ -100,7 +100,7 @@ public class MainMenu extends JFrame implements ActionListener{
 			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
 			System.out.println(serialComm.getLibrary().getGameList());
 			
-			Game[] gameArray = (Game[]) serialComm.getLibrary().getGameArray();
+			Game[] gameArray = serialComm.getLibrary().getGameArray();
 			competitionGUI.refreshGameList(gameArray);
 			
 			competitionGUI.refreshDataTable();

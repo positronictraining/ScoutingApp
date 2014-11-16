@@ -17,7 +17,7 @@ public class SerializationComm implements Serializable {
 	// File libraryFile = new File("/scouting486/ScoutingData/libraryfile.ser");
 	private File libraryFile = new File("ScoutingData/libraryfile.ser");
 	private Library library;
-	private ArrayList games;
+	private ArrayList<Game> games;
 	
 	public SerializationComm() {
 		new File("ScoutingData/").mkdirs();
