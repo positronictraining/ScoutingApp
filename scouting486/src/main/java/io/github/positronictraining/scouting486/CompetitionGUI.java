@@ -48,7 +48,7 @@ public class CompetitionGUI extends JFrame {
 	public JTextField competitionNameTxtFld;
 	public JTextField startDateTxtFld;
 	public JTextField endDateTxtFld;
-	public JComboBox competitionGameComboBox;
+	public JComboBox<Game> competitionGameComboBox;
 	public JList competitionList;
 	public JList gameList;
 
@@ -99,7 +99,7 @@ public class CompetitionGUI extends JFrame {
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String gameName = competitionGameComboBox.getSelectedItem().toString();
+				String gameName = ((Game)competitionGameComboBox.getSelectedItem()).gameName;
 				String gameDirectory = serialcomm.findGameFileDirectory(gameName);
 				
 				try {
@@ -143,7 +143,7 @@ public class CompetitionGUI extends JFrame {
 		gbc_lblCompetitionGame.gridy = 4;
 		panel.add(lblCompetitionGame, gbc_lblCompetitionGame);
 		
-		competitionGameComboBox = new JComboBox();					//new combo box
+		competitionGameComboBox = new JComboBox<Game>();					//new combo box
 		GridBagConstraints gbc_competitionGameComboBox = new GridBagConstraints();
 		gbc_competitionGameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionGameComboBox.insets = new Insets(0, 0, 5, 0);
