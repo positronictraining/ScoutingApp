@@ -49,8 +49,6 @@ public class CompetitionGUI extends JFrame {
 	public JTextField startDateTxtFld;
 	public JTextField endDateTxtFld;
 	public JComboBox competitionGameComboBox;
-	public JList competitionList;
-	public JList gameList;
 
 	private SerializationComm serialcomm;
 	
@@ -69,14 +67,8 @@ public class CompetitionGUI extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);	//adds a tabs mechanic to the GUI
 		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
-		competitionList = new JList(); //makes a competition-list JList
-		tabbedPane.addTab("Competitions List", null, competitionList, null); //calls that pane "Competitions List and adds the JList to the tabs
-		
 		dataTable = new JTable(); //makes a data-table
-		tabbedPane.addTab("Competition Statistics", null, dataTable, null); //calls that pane "Competition Statistics and adds the data-table to the tabs
-		
-		gameList = new JList();
-		tabbedPane.addTab("Game List",null,gameList,null);
+		tabbedPane.addTab("Competition Statistics", null, dataTable, null);
 		
 		JPanel panel = new JPanel(); //makes a new panel (to eventually put on a new tab)
 		tabbedPane.addTab("New Competition", null, panel, null); //adds that new panel to a new tab called 
@@ -192,10 +184,6 @@ public class CompetitionGUI extends JFrame {
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
 	
-	public void refreshGameList(Game[] gameArray){
-		gameList.setListData(gameArray);
-	}
-	
 	public void refreshDataTable(){
 		
 		String[] columnNames = {
@@ -224,7 +212,7 @@ public class CompetitionGUI extends JFrame {
 	
 	private Object[] newTableRow(int index){
 		
-		Competition competition = (Competition) competitionList.getSelectedValue();
+		Competition competition = (Competition) serialcomm.getLibrary().getSelectedCompetition();
 		Robot robot = competition.robots.get(index);
 		return competition.teamStats(robot.teamNumber);
 		
