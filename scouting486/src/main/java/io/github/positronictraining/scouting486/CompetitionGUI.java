@@ -204,6 +204,14 @@ public class CompetitionGUI extends JFrame {
 			data[i] = competition.teamStats(competition.robots.get(i).teamNumber);
 		}
 		dataTable = new JTable(data,columnNames);
+		/*dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				int row = dataTable.rowAtPoint(evt.getPoint());
+				int col = dataTable.columnAtPoint(evt.getPoint());
+				Object focusedObject = data[row][col]);
+			}
+		});*/
 	}
 	
 	private Object[] newTableRow(int index){
