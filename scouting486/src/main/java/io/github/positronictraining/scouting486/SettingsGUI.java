@@ -6,13 +6,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JComboBox;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class SettingsGUI extends JFrame {
 
@@ -25,8 +31,14 @@ public class SettingsGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SettingsGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	public JComboBox gameSelect, competitionSelect;
+	private SerializationComm serialcomm;
+	
+	
+	public SettingsGUI(SerializationComm serialcomm) {
+		this.serialcomm = serialcomm;
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,13 +66,19 @@ public class SettingsGUI extends JFrame {
 		gbc_lblGame.gridy = 1;
 		contentPane.add(lblGame, gbc_lblGame);
 		
-		JComboBox gameComboBox = new JComboBox();
+		gameSelect = new JComboBox(serialcomm.getLibrary().getGameArray());
+		if (serialcomm.getLibrary().gameSelected()) {
+			gameSelect.setSelectedItem(serialcomm.getLibrary().getSelectedGame());
+		} else {
+			gameSelect.setSelectedIndex(0);
+			serialcomm.getLibrary().setSelectedGame((Game)gameSelect.getSelectedItem());
+		}
 		GridBagConstraints gbc_gameComboBox = new GridBagConstraints();
 		gbc_gameComboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_gameComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_gameComboBox.gridx = 0;
 		gbc_gameComboBox.gridy = 2;
-		contentPane.add(gameComboBox, gbc_gameComboBox);
+		contentPane.add(gameSelect, gbc_gameComboBox);
 		
 		JLabel lblCompetition = new JLabel("Competition");
 		GridBagConstraints gbc_lblCompetition = new GridBagConstraints();
@@ -70,13 +88,14 @@ public class SettingsGUI extends JFrame {
 		gbc_lblCompetition.gridy = 3;
 		contentPane.add(lblCompetition, gbc_lblCompetition);
 		
-		JComboBox competitionComboBox = new JComboBox();
+		ArrayList<Competition> compList = serialcomm.getLibrary().getSelectedGame().getCompetitions();
+		competitionSelect = new JComboBox(compList.toArray(new Competition[compList.size()]));
 		GridBagConstraints gbc_competitionComboBox = new GridBagConstraints();
 		gbc_competitionComboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_competitionComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_competitionComboBox.gridx = 0;
 		gbc_competitionComboBox.gridy = 4;
-		contentPane.add(competitionComboBox, gbc_competitionComboBox);
+		contentPane.add(competitionSelect, gbc_competitionComboBox);
 		
 		JButton btnRefreshSetings = new JButton("Refresh Settings");
 		GridBagConstraints gbc_btnRefreshSetings = new GridBagConstraints();

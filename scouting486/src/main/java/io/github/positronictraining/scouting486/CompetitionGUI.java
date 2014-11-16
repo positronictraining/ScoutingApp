@@ -49,14 +49,14 @@ public class CompetitionGUI extends JFrame {
 	public JTextField startDateTxtFld;
 	public JTextField endDateTxtFld;
 	public JComboBox competitionGameComboBox;
-	public JComboBox gameSelect, competitionSelect;
 	public JList competitionList;
 	public JList gameList;
 
-	private SerializationComm serialcomm = new SerializationComm();
+	private SerializationComm serialcomm;
 	
 	//METHODS
-	public CompetitionGUI() { //initializes and shows a new overview page whenever a new instance of Overview is made
+	public CompetitionGUI(SerializationComm serialcomm) { //initializes and shows a new overview page whenever a new instance of Overview is made
+		this.serialcomm = serialcomm;
 		initialize();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -68,19 +68,6 @@ public class CompetitionGUI extends JFrame {
 		
 		JToolBar toolBar = new JToolBar();
 		getContentPane().add(toolBar, BorderLayout.NORTH);
-		
-		gameSelect = new JComboBox(serialcomm.getLibrary().getGameArray());
-		if (serialcomm.getLibrary().gameSelected()) {
-			gameSelect.setSelectedItem(serialcomm.getLibrary().getSelectedGame());
-		} else {
-			gameSelect.setSelectedIndex(0);
-			serialcomm.getLibrary().setSelectedGame((Game)gameSelect.getSelectedItem());
-		}
-		toolBar.add(gameSelect);
-		
-		ArrayList<Competition> compList = serialcomm.getLibrary().getSelectedGame().getCompetitions();
-		competitionSelect = new JComboBox(compList.toArray(new Competition[compList.size()]));
-		toolBar.add(competitionSelect);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);	//adds a tabs mechanic to the GUI
 		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -252,21 +239,5 @@ public class CompetitionGUI extends JFrame {
 		}
 //		competitionGameComboBox = new JComboBox(gameList.toArray());
 		System.out.println("Refreshed Combo BoxGame List"); //
-	}
-	public void refreshGameBox(ArrayList<Game> gameList){
-		this.gameSelect.removeAll(); //
-		for (Game g:gameList) {
-			this.gameSelect.addItem(g); //
-		}
-//		competitionGameComboBox = new JComboBox(gameList.toArray());
-		System.out.println("Refreshed Game Selection Menu"); //
-	}
-	public void refreshCompetitionBox(ArrayList<Competition> compList){
-		this.gameSelect.removeAll(); //
-		for (Competition c:compList) {
-			this.competitionSelect.addItem(c); //
-		}
-//		competitionGameComboBox = new JComboBox(gameList.toArray());
-		System.out.println("Refreshed Game Selection Menu"); //
 	}
 }
