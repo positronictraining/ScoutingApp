@@ -145,6 +145,9 @@ public class MainMenu extends JFrame implements ActionListener{
 			
 			competitionGUI.refreshDataTable();
 		}
+		else if (event.getSource() == btnNewCompetition){
+			
+		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
 			newMatch = new MatchGUI();
