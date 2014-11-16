@@ -14,6 +14,7 @@ public class Scouting486 {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		SerializationComm serialcomm = new SerializationComm();
+		MainMenu mainMenu = new MainMenu(serialcomm);
 		
 		Game aerialAssist = new Game("Aerial Assist");
  		aerialAssist.year = 2014;

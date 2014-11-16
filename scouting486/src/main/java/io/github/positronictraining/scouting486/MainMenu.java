@@ -29,10 +29,11 @@ public class MainMenu extends JFrame implements ActionListener{
 	private NewRobotGUI newRobot;
 	private SettingsGUI settingsGUI;
 	
-	private SerializationComm serialComm = new SerializationComm();
+	private SerializationComm serialComm;
 	private JButton btnSettings;
 	
-	public MainMenu() {
+	public MainMenu(SerializationComm serialComm) {
+		this.serialComm = serialComm;
 		try {
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 		} catch (ClassNotFoundException e) {
