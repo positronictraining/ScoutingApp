@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JTable;
 
 public class MainMenu extends JFrame implements ActionListener{
 	/**
@@ -45,6 +46,8 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JPanel panel;
 	private JToolBar toolBar;
 	private JPanel panel_1;
+	private JTable table;
+	private JButton btnNewCompetition;
 	
 	public MainMenu(SerializationComm serialComm) {
 		this.serialComm = serialComm;
@@ -65,7 +68,7 @@ public class MainMenu extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets up main menu frame
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -86,13 +89,21 @@ public class MainMenu extends JFrame implements ActionListener{
 		
 		btnTeamStatistics.addActionListener(this);		//adds action listeners for all buttons
 		
+		btnNewCompetition = new JButton("New Competition");
+		btnNewCompetition.setEnabled(false);
+		btnNewCompetition.setToolTipText("not implemented yet");
+		toolBar.add(btnNewCompetition);
+		btnNewCompetition.addActionListener(this);
+		
 		btnNewMatch = new JButton("New Match");
 		btnNewMatch.setToolTipText("Create a new match");
 		toolBar.add(btnNewMatch);
+		btnNewMatch.addActionListener(this);
 		
 		btnNewRobot = new JButton("New Robot");
 		btnNewRobot.setToolTipText("Create a new robot");
 		toolBar.add(btnNewRobot);
+		btnNewRobot.addActionListener(this);
 		
 		btnQrCode = new JButton("QR Code");
 		btnQrCode.setToolTipText("Not implemented yet");
@@ -104,9 +115,21 @@ public class MainMenu extends JFrame implements ActionListener{
 		btnSettings.setToolTipText("Manage settings");
 		toolBar.add(btnSettings);
 		btnSettings.addActionListener(this);
-		btnNewRobot.addActionListener(this);
-		btnNewMatch.addActionListener(this);
+
 		contentPane.add(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0};
+		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		table = new JTable();
+		GridBagConstraints gbc_table = new GridBagConstraints();
+		gbc_table.fill = GridBagConstraints.BOTH;
+		gbc_table.gridx = 0;
+		gbc_table.gridy = 0;
+		panel.add(table, gbc_table);
 		
 		setVisible(true); 					//makes the frame visible
 	}
