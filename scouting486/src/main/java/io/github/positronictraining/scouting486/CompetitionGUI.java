@@ -190,7 +190,7 @@ public class CompetitionGUI extends JFrame {
 	}
 	
 	public void refreshGameList(Game[] gameArray){
-		gameList = new JList(gameArray);
+		gameList.setListData(gameArray);
 	}
 	
 	public void refreshDataTable(){
