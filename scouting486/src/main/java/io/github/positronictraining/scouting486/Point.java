@@ -8,7 +8,7 @@ public class Point implements Serializable{
 	private String pointName;
 	private String pointPeriod;
 	private int pointValue;
-	private int scoringTeam;
+	private String scoringTeam;
 	
 	
 	//METHODS
@@ -19,7 +19,7 @@ public class Point implements Serializable{
 		this.pointValue = pointValue;
 	}
 
- 	public void newPointScored(Point pointType, int team){ //creates a new score of a predetermined point type for a specified team
+ 	public void newPointScored(Point pointType, String team){ //creates a new score of a predetermined point type for a specified team
  		this.pointName = pointType.getPointName();
  		this.pointPeriod = pointType.getPointPeriod();
  		this.pointValue = pointType.getPointValue();
@@ -32,7 +32,7 @@ public class Point implements Serializable{
 	public int getPointValue(){ //getter for pointValue since pointValue is private
 		return this.pointValue;
 	}
-	public int getScoringTeam(){ //getter for scoringTeam since scoringTeam is private
+	public String getScoringTeam(){ //getter for scoringTeam since scoringTeam is private
 		return this.scoringTeam;
 	}
 	public String getPointPeriod(){ //getter for pointPeriod since pointPeriod is private

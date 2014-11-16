@@ -18,7 +18,7 @@ public class Competition implements Serializable{
 	
 	//METHODS
 	
-	public Object[] teamStats(int team){
+	public Object[] teamStats(String team){
 		
 		Object[] teamStats = new Object[4];
 		
@@ -64,13 +64,13 @@ public class Competition implements Serializable{
 		return teamStats;
 	}
 	
-	public void addRobot(int teamNumber){ //adds a new robot with a specified team number to the robots in the competition
+	public void addRobot(String teamNumber){ //adds a new robot with a specified team number to the robots in the competition
 		Robot newRobot = new Robot();
 		newRobot.teamNumber = teamNumber;
 		robots.add(newRobot);
 	}
 	
-	public void addMatch(int red1, int red2, int red3, int blue1, int blue2, int blue3){ //adds a match with specified team numbers to the competition
+	public void addMatch(String red1, String red2, String red3, String blue1, String blue2, String blue3){ //adds a match with specified team numbers to the competition
 		Match newMatch = new Match();
 		newMatch.setRedAndBlueAlliances(red1, red2, red3, blue1, blue2, blue3);
 		matches.add(newMatch);

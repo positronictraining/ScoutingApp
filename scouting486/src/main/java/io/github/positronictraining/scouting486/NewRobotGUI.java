@@ -87,6 +87,11 @@ public class NewRobotGUI extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
+		System.out.println("the submit button was pressed");
+		Competition selectedCompetition = serialcomm.getLibrary().getSelectedCompetition();
+		selectedCompetition.addRobot(this.textField_teamNumber.getText());
+		serialcomm.writeGame(serialcomm.getLibrary().getSelectedGame());
+		this.clearAll();
 	}
 
 }

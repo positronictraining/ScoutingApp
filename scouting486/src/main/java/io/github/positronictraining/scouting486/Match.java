@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Match implements Serializable{
 	
 	//VARIABLES
-	public int[] blueAlliance = new int[3];
-	public int[] redAlliance = new int[3];
+	public String[] blueAlliance = new String[3];
+	public String[] redAlliance = new String[3];
 	private int blueAllianceScore;
 	private int redAllianceScore;
 	private String gameComment;
@@ -18,7 +18,7 @@ public class Match implements Serializable{
 	public boolean blueWon = false;
 	
 	//METHODS
-	public void setRedAndBlueAlliances(int red1, int red2, int red3, int blue1, int blue2, int blue3){ //sets matches for the team
+	public void setRedAndBlueAlliances(String red1, String red2, String red3, String blue1, String blue2, String blue3){ //sets matches for the team
 		this.redAlliance[0] = red1;
 		this.redAlliance[1] = red2;
 		this.redAlliance[2] = red3;
@@ -27,7 +27,7 @@ public class Match implements Serializable{
 		this.blueAlliance[2] = blue3;
 	}
 	
-	public void pointScored(Game game, int pointTypeIndex, int scoringTeam, String alliance){ //adds a new score given certain values and adjusts the present score of the match
+	public void pointScored(Game game, int pointTypeIndex, String scoringTeam, String alliance){ //adds a new score given certain values and adjusts the present score of the match
 		Point scoredPoint = new Point();
 		scoredPoint.newPointScored(game.getPointTypes().get(pointTypeIndex), scoringTeam);
 		pointsScored.add(scoredPoint);
