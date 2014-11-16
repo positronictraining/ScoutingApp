@@ -29,6 +29,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	private NewRobotGUI newRobot;
 	
 	private SerializationComm serialComm = new SerializationComm();
+	private JButton btnSettings;
 	
 	public MainMenu() {
 		try {
@@ -53,9 +54,9 @@ public class MainMenu extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		btnTeamStatistics = new JButton("Team Statistics");	//adds team stats button
@@ -81,14 +82,22 @@ public class MainMenu extends JFrame implements ActionListener{
 		
 		btnQrCode = new JButton("QR Code");		//adds qr code button
 		GridBagConstraints gbc_btnQrCode = new GridBagConstraints();
+		gbc_btnQrCode.insets = new Insets(0, 0, 5, 0);
 		gbc_btnQrCode.gridx = 1;
 		gbc_btnQrCode.gridy = 4;
 		contentPane.add(btnQrCode, gbc_btnQrCode);
+		
+		btnSettings = new JButton("Settings");
+		GridBagConstraints gbc_btnSettings = new GridBagConstraints();
+		gbc_btnSettings.gridx = 1;
+		gbc_btnSettings.gridy = 5;
+		contentPane.add(btnSettings, gbc_btnSettings);
 		
 		btnTeamStatistics.addActionListener(this);		//adds action listeners for all buttons
 		btnNewMatch.addActionListener(this);
 		btnNewRobot.addActionListener(this);
 		btnQrCode.addActionListener(this);
+		btnSettings.addActionListener(this);
 		
 		setVisible(true); 					//makes the frame visible
 	}
@@ -114,9 +123,12 @@ public class MainMenu extends JFrame implements ActionListener{
 			newRobot = new NewRobotGUI();
 			//TODO
 		}
-		else{ //what happens if the qr code button is pressed
+		else if (event.getSource() == btnQrCode){ //what happens if the qr code button is pressed
 			System.out.println("the qr code button was pressed");
 			//TODO
+		}
+		else{
+			//(code for settings button)
 		}
 	}
 }
