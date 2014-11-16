@@ -93,22 +93,13 @@ public class CompetitionGUI extends JFrame {
 		newCompetitionBtn.addActionListener(new ActionListener() {	//What is done if newCompetitionBtn is pressed
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String gameName = ((Game)competitionGameComboBox.getSelectedItem()).gameName;
-				String gameDirectory = serialcomm.findGameFileDirectory(gameName);
+				Game game = (Game)competitionGameComboBox.getSelectedItem();
+				game.addNewCompetition(competitionNameTxtFld.getText(),game,startDateTxtFld.getText(),endDateTxtFld.getText());
+				serialcomm.writeLibrary();
 				
-				try {
-					
-					Game game = serialcomm.readGame(gameDirectory);
-					game.addNewCompetition(competitionNameTxtFld.getText(),game,startDateTxtFld.getText(),endDateTxtFld.getText());
-					serialcomm.writeGame(game);
-					
-					competitionNameTxtFld.setText("");
-					startDateTxtFld.setText("");
-					endDateTxtFld.setText("");
-					
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+				competitionNameTxtFld.setText("");
+				startDateTxtFld.setText("");
+				endDateTxtFld.setText("");
 			}
 		});
 		JLabel competitionNameLabel = new JLabel("Competition Name");	//New Label called lblNewCompetition
