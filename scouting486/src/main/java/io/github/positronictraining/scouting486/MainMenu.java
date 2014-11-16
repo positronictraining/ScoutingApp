@@ -23,10 +23,6 @@ import java.awt.Component;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
 
 public class MainMenu extends JFrame implements ActionListener{
 	/**
