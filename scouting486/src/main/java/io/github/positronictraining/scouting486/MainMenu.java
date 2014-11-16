@@ -26,6 +26,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	
 	private CompetitionGUI competitionGUI;
 	private MatchGUI newMatch;
+	private NewRobotGUI newRobot;
 	
 	private SerializationComm serialComm = new SerializationComm();
 	
@@ -110,6 +111,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		}
 		else if (event.getSource() == btnNewRobot){ //what happens if the new robot button was pressed
 			System.out.println("the new robot button was pressed");
+			newRobot = new NewRobotGUI();
 			//TODO
 		}
 		else{ //what happens if the qr code button is pressed
