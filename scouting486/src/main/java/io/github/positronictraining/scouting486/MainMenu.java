@@ -1,5 +1,6 @@
 package io.github.positronictraining.scouting486;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,18 +10,23 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
+
 import java.awt.Component;
 import java.awt.CardLayout;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTable;
@@ -125,12 +131,18 @@ public class MainMenu extends JFrame implements ActionListener{
 		gbl_panel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		table = new JTable();
+		
+		String[][] data = {{"1","2","3"},{"4","5","6"},{"7","8","9"}};
+		String[] columnNames = {"First","Second","Third"};
+		table = new JTable(data,columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(550,350));
+		table.setFillsViewportHeight(true);
+		JScrollPane jScrollPane = new JScrollPane(table);
 		GridBagConstraints gbc_table = new GridBagConstraints();
 		gbc_table.fill = GridBagConstraints.BOTH;
 		gbc_table.gridx = 0;
 		gbc_table.gridy = 0;
-		panel.add(table, gbc_table);
+		panel.add(jScrollPane, gbc_table);
 		
 		setVisible(true); 					//makes the frame visible
 	}
@@ -168,4 +180,13 @@ public class MainMenu extends JFrame implements ActionListener{
 			settingsGUI = new SettingsGUI(serialComm);
 		}
 	}
+	
+//	String[] columnNames = {
+//			"Team",
+//			"Wins",
+//			"Losses",
+//			"Total Points",
+//			"Total Penalties"
+//	};
+	
 }
