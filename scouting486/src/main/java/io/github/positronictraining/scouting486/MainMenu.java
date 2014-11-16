@@ -53,7 +53,8 @@ public class MainMenu extends JFrame implements ActionListener{
 		this.serialComm = serialComm;
 		this.setTitle("Scouting486 - Main Menu");
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			//UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,7 +71,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets up main menu frame
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		panel_1 = new JPanel();

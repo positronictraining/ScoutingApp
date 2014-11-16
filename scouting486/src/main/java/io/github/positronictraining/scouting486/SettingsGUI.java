@@ -19,6 +19,19 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import javax.swing.Box;
+import java.awt.Component;
+import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class SettingsGUI extends JFrame {
 
@@ -34,76 +47,87 @@ public class SettingsGUI extends JFrame {
 	
 	public JComboBox gameSelect, competitionSelect;
 	private SerializationComm serialcomm;
-	
+	private JButton btnRefreshSettings;
 	
 	public SettingsGUI(SerializationComm serialcomm) {
 		this.serialcomm = serialcomm;
+		init();
+	}
+	
+	public void init() {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		ArrayList<Competition> compList = serialcomm.getLibrary().getSelectedGame().getCompetitions();
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		Box verticalBox = Box.createVerticalBox();
+		contentPane.add(verticalBox, BorderLayout.NORTH);
+		
+		btnRefreshSettings = new JButton("Refresh Settings");
+		btnRefreshSettings.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent arg0) {
+				btnRefreshSettings.doClick();
+			}
+		});
+		btnRefreshSettings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (serialcomm.getLibrary().gameSelected()) {
+					gameSelect.setSelectedItem(serialcomm.getLibrary().getSelectedGame());
+				} else {
+					gameSelect.setSelectedIndex(0);
+					serialcomm.getLibrary().setSelectedGame((Game)gameSelect.getSelectedItem());
+				}
+			}
+		});
+		btnRefreshSettings.setVerticalAlignment(SwingConstants.BOTTOM);
+		contentPane.add(btnRefreshSettings, BorderLayout.SOUTH);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblSettings = new JLabel("Settings");
+		panel_1.add(lblSettings);
+		lblSettings.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblSettings.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		GridBagConstraints gbc_lblSettings = new GridBagConstraints();
-		gbc_lblSettings.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSettings.gridx = 0;
-		gbc_lblSettings.gridy = 0;
-		contentPane.add(lblSettings, gbc_lblSettings);
+		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		panel.add(panel_2);
 		
 		JLabel lblGame = new JLabel("Game");
-		GridBagConstraints gbc_lblGame = new GridBagConstraints();
-		gbc_lblGame.anchor = GridBagConstraints.WEST;
-		gbc_lblGame.insets = new Insets(0, 0, 5, 5);
-		gbc_lblGame.gridx = 0;
-		gbc_lblGame.gridy = 1;
-		contentPane.add(lblGame, gbc_lblGame);
+		panel_2.add(lblGame);
+		
+		JPanel panel_3 = new JPanel();
+		panel.add(panel_3);
+		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
 		
 		gameSelect = new JComboBox(serialcomm.getLibrary().getGameArray());
-		if (serialcomm.getLibrary().gameSelected()) {
-			gameSelect.setSelectedItem(serialcomm.getLibrary().getSelectedGame());
-		} else {
-			gameSelect.setSelectedIndex(0);
-			serialcomm.getLibrary().setSelectedGame((Game)gameSelect.getSelectedItem());
-		}
-		GridBagConstraints gbc_gameComboBox = new GridBagConstraints();
-		gbc_gameComboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_gameComboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_gameComboBox.gridx = 0;
-		gbc_gameComboBox.gridy = 2;
-		contentPane.add(gameSelect, gbc_gameComboBox);
+		panel_3.add(gameSelect);
+		
+		JPanel panel_4 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		panel.add(panel_4);
 		
 		JLabel lblCompetition = new JLabel("Competition");
-		GridBagConstraints gbc_lblCompetition = new GridBagConstraints();
-		gbc_lblCompetition.anchor = GridBagConstraints.WEST;
-		gbc_lblCompetition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCompetition.gridx = 0;
-		gbc_lblCompetition.gridy = 3;
-		contentPane.add(lblCompetition, gbc_lblCompetition);
+		panel_4.add(lblCompetition);
 		
-		ArrayList<Competition> compList = serialcomm.getLibrary().getSelectedGame().getCompetitions();
+		JPanel panel_5 = new JPanel();
+		panel.add(panel_5);
+		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
 		competitionSelect = new JComboBox(compList.toArray(new Competition[compList.size()]));
-		GridBagConstraints gbc_competitionComboBox = new GridBagConstraints();
-		gbc_competitionComboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_competitionComboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_competitionComboBox.gridx = 0;
-		gbc_competitionComboBox.gridy = 4;
-		contentPane.add(competitionSelect, gbc_competitionComboBox);
+		panel_5.add(competitionSelect);
 		
-		JButton btnRefreshSetings = new JButton("Refresh Settings");
-		GridBagConstraints gbc_btnRefreshSetings = new GridBagConstraints();
-		gbc_btnRefreshSetings.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRefreshSetings.anchor = GridBagConstraints.EAST;
-		gbc_btnRefreshSetings.gridx = 0;
-		gbc_btnRefreshSetings.gridy = 6;
-		contentPane.add(btnRefreshSetings, gbc_btnRefreshSetings);
 		
 		this.setVisible(true);
 	}
