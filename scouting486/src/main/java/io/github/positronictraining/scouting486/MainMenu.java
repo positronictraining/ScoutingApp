@@ -112,7 +112,6 @@ public class MainMenu extends JFrame implements ActionListener{
 			System.out.println(serialComm.getLibrary().getGameList());
 			
 			Game[] gameArray = serialComm.getLibrary().getGameArray();
-			competitionGUI.refreshGameList(gameArray);
 			
 			competitionGUI.refreshDataTable();
 		}
