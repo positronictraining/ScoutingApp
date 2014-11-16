@@ -85,6 +85,8 @@ public class SettingsGUI extends JFrame {
 		gbc_btnRefreshSetings.gridx = 0;
 		gbc_btnRefreshSetings.gridy = 6;
 		contentPane.add(btnRefreshSetings, gbc_btnRefreshSetings);
+		
+		this.setVisible(true);
 	}
 
 }

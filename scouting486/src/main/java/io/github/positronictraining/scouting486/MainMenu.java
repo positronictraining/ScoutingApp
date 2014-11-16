@@ -27,6 +27,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	private CompetitionGUI competitionGUI;
 	private MatchGUI newMatch;
 	private NewRobotGUI newRobot;
+	private SettingsGUI settingsGUI;
 	
 	private SerializationComm serialComm = new SerializationComm();
 	private JButton btnSettings;
@@ -129,6 +130,8 @@ public class MainMenu extends JFrame implements ActionListener{
 		}
 		else{
 			//(code for settings button)
+			System.out.println("the settings button was pressed");
+			settingsGUI = new SettingsGUI();
 		}
 	}
 }
