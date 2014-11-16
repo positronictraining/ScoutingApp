@@ -55,6 +55,8 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JTable table;
 	private JButton btnNewCompetition;
 	
+	private DataModel dataModel = new DataModel();
+	
 	public MainMenu(SerializationComm serialComm) {
 		this.serialComm = serialComm;
 		this.setTitle("Scouting486 - Main Menu");
@@ -131,10 +133,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		gbl_panel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		
-		String[][] data = {{"1","2","3"},{"4","5","6"},{"7","8","9"}};
-		String[] columnNames = {"First","Second","Third"};
-		table = new JTable(data,columnNames);
+		table = new JTable(dataModel);
 		table.setPreferredScrollableViewportSize(new Dimension(550,350));
 		table.setFillsViewportHeight(true);
 		JScrollPane jScrollPane = new JScrollPane(table);
@@ -180,13 +179,5 @@ public class MainMenu extends JFrame implements ActionListener{
 			settingsGUI = new SettingsGUI(serialComm);
 		}
 	}
-	
-//	String[] columnNames = {
-//			"Team",
-//			"Wins",
-//			"Losses",
-//			"Total Points",
-//			"Total Penalties"
-//	};
-	
+
 }
