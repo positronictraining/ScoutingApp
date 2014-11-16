@@ -64,10 +64,7 @@ public class CompetitionGUI extends JFrame {
 	
 	private void initialize() { //Makes a new GUI for the overview
 		
-		this.setBounds(100, 100, 500, 400);	//Sets the size of the frame
-		
-		JToolBar toolBar = new JToolBar();
-		getContentPane().add(toolBar, BorderLayout.NORTH);
+		this.setBounds(100, 100, 500, 400);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);	//adds a tabs mechanic to the GUI
 		this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
