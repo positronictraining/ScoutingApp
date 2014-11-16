@@ -106,14 +106,14 @@ public class MainMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event){ //what happens when a button of any type is pressed
 		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
 			System.out.println("the team statistics button was pressed");
-			competitionGUI = new CompetitionGUI();
-//			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
-//			System.out.println(serialComm.getLibrary().getGameList());
-//			
-//			Game[] gameArray = serialComm.getLibrary().getGameArray();
-//			competitionGUI.refreshGameList(gameArray);
-//			
-//			competitionGUI.refreshDataTable();
+			competitionGUI = new CompetitionGUI(serialComm);
+			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
+			System.out.println(serialComm.getLibrary().getGameList());
+			
+			Game[] gameArray = serialComm.getLibrary().getGameArray();
+			competitionGUI.refreshGameList(gameArray);
+			
+			competitionGUI.refreshDataTable();
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
@@ -131,7 +131,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		else{
 			//(code for settings button)
 			System.out.println("the settings button was pressed");
-			settingsGUI = new SettingsGUI();
+			settingsGUI = new SettingsGUI(serialComm);
 		}
 	}
 }
