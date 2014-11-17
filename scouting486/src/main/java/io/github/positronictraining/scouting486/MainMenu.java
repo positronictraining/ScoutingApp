@@ -142,6 +142,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		gbc_table.gridx = 0;
 		gbc_table.gridy = 0;
 		panel.add(jScrollPane, gbc_table);
+		dataModel.updateData(serialComm.getLibrary().getSelectedCompetition());
 		
 		setVisible(true); 					//makes the frame visible
 	}
@@ -155,7 +156,6 @@ public class MainMenu extends JFrame implements ActionListener{
 			
 			Game[] gameArray = serialComm.getLibrary().getGameArray();
 			
-			competitionGUI.refreshDataTable();
 		}
 		else if (event.getSource() == btnNewCompetition){
 			

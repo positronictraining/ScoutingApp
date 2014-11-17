@@ -182,40 +182,6 @@ public class CompetitionGUI extends JFrame {
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 	}
 	
-	public void refreshDataTable(){
-		
-		String[] columnNames = {
-				"Team",
-				"Wins",
-				"Losses",
-				"Total Points",
-				"Total Penalties"
-		};
-		Competition competition = serialcomm.getLibrary().getSelectedCompetition();
-		ArrayList<Robot> roblist = competition.robots;
-		//Object[][] data = new Object[competition.robots.size()][5];
-		//for ( int i = 0 ; i < competition.robots.size() ; i++ ){
-		//	data[i] = competition.teamStats(competition.robots.get(i).teamNumber);
-		//}
-		//dataTable = new JTable(data,columnNames);
-		/*dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
-			@Override
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				int row = dataTable.rowAtPoint(evt.getPoint());
-				int col = dataTable.columnAtPoint(evt.getPoint());
-				Object focusedObject = data[row][col]);
-			}
-		});*/
-	}
-	
-	private Object[] newTableRow(int index){
-		
-		Competition competition = (Competition) serialcomm.getLibrary().getSelectedCompetition();
-		Robot robot = competition.robots.get(index);
-		return competition.teamStats(robot.teamNumber);
-		
-	}
-	
 	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
 		this.competitionGameComboBox.removeAll(); //
 		for (Game g:gameList) {

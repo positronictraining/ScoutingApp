@@ -18,9 +18,9 @@ public class Competition implements Serializable{
 	
 	//METHODS
 	
-	public Object[] teamStats(String team){
+	public ArrayList<Object> teamStats(String team){
 		
-		Object[] teamStats = new Object[5];
+		ArrayList<Object> teamStats = new ArrayList<Object>();
 		
 		int teamWins = 0;
 		int teamLosses = 0;
@@ -58,11 +58,11 @@ public class Competition implements Serializable{
 			}
 		}
 		
-		teamStats[0] = team;
-		teamStats[1] = teamWins;
-		teamStats[2] = teamLosses;
-		teamStats[3] = totalPoints;
-		teamStats[4] = totalPenalties;
+		teamStats.add(team);
+		teamStats.add(teamWins);
+		teamStats.add(teamLosses);
+		teamStats.add(totalPoints);
+		teamStats.add(totalPenalties);
 		return teamStats;
 	}
 	
