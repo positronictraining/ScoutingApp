@@ -20,7 +20,7 @@ public class Competition implements Serializable{
 	
 	public Object[] teamStats(String team){
 		
-		Object[] teamStats = new Object[4];
+		Object[] teamStats = new Object[5];
 		
 		int teamWins = 0;
 		int teamLosses = 0;
@@ -57,10 +57,12 @@ public class Competition implements Serializable{
 				}
 			}
 		}
-		teamStats[0] = teamWins;
-		teamStats[1] = teamLosses;
-		teamStats[2] = totalPoints;
-		teamStats[3] = totalPenalties;
+		
+		teamStats[0] = team;
+		teamStats[1] = teamWins;
+		teamStats[2] = teamLosses;
+		teamStats[3] = totalPoints;
+		teamStats[4] = totalPenalties;
 		return teamStats;
 	}
 	
