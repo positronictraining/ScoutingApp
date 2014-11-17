@@ -143,6 +143,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		gbc_table.gridy = 0;
 		panel.add(jScrollPane, gbc_table);
 		dataModel.updateData(serialComm.getLibrary().getSelectedCompetition());
+		System.out.println(serialComm.getLibrary().getSelectedCompetition().robots.size() + "this is the selected competition robot size");
 		
 		setVisible(true); 					//makes the frame visible
 	}

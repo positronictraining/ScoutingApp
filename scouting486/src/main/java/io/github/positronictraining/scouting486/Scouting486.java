@@ -22,7 +22,9 @@ public class Scouting486 {
  		aerialAssist.getCompetitions().get(0).addMatch("1", "2", "3", "4", "5", "6");
  		aerialAssist.getCompetitions().get(0).getMatches().get(0).pointScored(aerialAssist, 0, "1", "red");
 		aerialAssist.getCompetitions().get(0).addRobot("1");
+		System.out.println(aerialAssist.getCompetitions().get(0).robots.size());
 		serialcomm.findGameFileDirectory(aerialAssist.gameName);
+		System.out.println(serialcomm.findGameFileDirectory(aerialAssist.gameName));
 		serialcomm.writeGameIfNotExists(aerialAssist);
 		
 		MainMenu mainMenu = new MainMenu(serialcomm);

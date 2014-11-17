@@ -47,8 +47,8 @@ public class DataModel extends AbstractTableModel{
 	
 	public void updateData(Competition competition){
 		data.clear();
-		ArrayList<Robot> allTeams = competition.getRobots();
-		System.out.println(allTeams.size());
+		ArrayList<Robot> allTeams = competition.robots;
+		System.out.println(competition.robots.size());
 		for (int i = 0; i < allTeams.size(); i++){
 			data.add(competition.teamStats(allTeams.get(i).teamNumber));
 		}
