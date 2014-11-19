@@ -6,12 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JToggleButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -174,5 +179,6 @@ public class MatchGUI extends JFrame {
 	private void addNewMatch(String red1, String red2, String red3, String blue1, String blue2, String blue3){
 		serialComm.getLibrary().getSelectedCompetition().addMatch(red1, red2, red3, blue1, blue2, blue3);
 		dataModel.updateData(serialComm.getLibrary().getSelectedCompetition());
+		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	}
 }
