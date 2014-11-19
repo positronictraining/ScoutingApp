@@ -46,6 +46,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	private MatchGUI newMatch;
 	private NewRobotGUI newRobot;
 	private SettingsGUI settingsGUI;
+	private NewCompetitionFrame newCompetitionFrame;
 	
 	private SerializationComm serialComm;
 	private JButton btnSettings;
@@ -99,8 +100,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		btnTeamStatistics.addActionListener(this);		//adds action listeners for all buttons
 		
 		btnNewCompetition = new JButton("New Competition");
-		btnNewCompetition.setEnabled(false);
-		btnNewCompetition.setToolTipText("not implemented yet");
+		btnNewCompetition.setToolTipText("");
 		toolBar.add(btnNewCompetition);
 		btnNewCompetition.addActionListener(this);
 		
@@ -159,11 +159,12 @@ public class MainMenu extends JFrame implements ActionListener{
 			
 		}
 		else if (event.getSource() == btnNewCompetition){
-			
+			System.out.println("the new competition button was pressed");
+			newCompetitionFrame = new NewCompetitionFrame(serialComm);
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
-			newMatch = new MatchGUI();
+			newMatch = new MatchGUI(serialComm,dataModel);
 		}
 		else if (event.getSource() == btnNewRobot){ //what happens if the new robot button was pressed
 			System.out.println("the new robot button was pressed");

@@ -27,10 +27,15 @@ public class MatchGUI extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	
-	public MatchGUI(){
+	private DataModel dataModel;
+	private SerializationComm serialComm;
+	
+	public MatchGUI(SerializationComm serialComm, DataModel dataModel){
 		this.initialize();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.dataModel = dataModel;
+		this.serialComm = serialComm;
 	}
 	
 	private void initialize() {
@@ -151,6 +156,13 @@ public class MatchGUI extends JFrame {
 		btnCreateMatch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Create New Match Button");
+				addNewMatch(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText(),textField_4.getText(),textField_5.getText());
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				textField_5.setText("");
 			}
 		});
 		GridBagConstraints gbc_btnCreateMatch = new GridBagConstraints();
@@ -158,5 +170,9 @@ public class MatchGUI extends JFrame {
 		gbc_btnCreateMatch.gridx = 3;
 		gbc_btnCreateMatch.gridy = 7;
 		contentPane.add(btnCreateMatch, gbc_btnCreateMatch);
+	}
+	private void addNewMatch(String red1, String red2, String red3, String blue1, String blue2, String blue3){
+		serialComm.getLibrary().getSelectedCompetition().addMatch(red1, red2, red3, blue1, blue2, blue3);
+		dataModel.updateData(serialComm.getLibrary().getSelectedCompetition());
 	}
 }
