@@ -37,12 +37,10 @@ public class MainMenu extends JFrame implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L; //weird eclipse fix--don't worry about this
 	private JPanel contentPane;
-	private JButton btnTeamStatistics;
 	private JButton btnNewMatch;
 	private JButton btnNewRobot;
 	private JButton btnQrCode;
 	
-	private CompetitionGUI competitionGUI;
 	private MatchGUI newMatch;
 	private NewRobotGUI newRobot;
 	private SettingsGUI settingsGUI;
@@ -94,11 +92,6 @@ public class MainMenu extends JFrame implements ActionListener{
 		panel_1.add(toolBar);
 		toolBar.setFloatable(false);
 		
-		btnTeamStatistics = new JButton("Team Statistics");
-		toolBar.add(btnTeamStatistics);
-		
-		btnTeamStatistics.addActionListener(this);		//adds action listeners for all buttons
-		
 		btnNewCompetition = new JButton("New Competition");
 		btnNewCompetition.setToolTipText("");
 		toolBar.add(btnNewCompetition);
@@ -149,16 +142,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent event){ //what happens when a button of any type is pressed
-		if (event.getSource() == btnTeamStatistics){ //what happens if the team statistics button was pressed
-			System.out.println("the team statistics button was pressed");
-			competitionGUI = new CompetitionGUI(serialComm);
-			competitionGUI.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
-			System.out.println(serialComm.getLibrary().getGameList());
-			
-			Game[] gameArray = serialComm.getLibrary().getGameArray();
-			
-		}
-		else if (event.getSource() == btnNewCompetition){
+		if (event.getSource() == btnNewCompetition){
 			System.out.println("the new competition button was pressed");
 			newCompetitionFrame = new NewCompetitionFrame(serialComm);
 		}
