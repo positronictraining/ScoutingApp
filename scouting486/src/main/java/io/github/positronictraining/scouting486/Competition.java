@@ -69,7 +69,7 @@ public class Competition implements Serializable{
 	public void addRobot(String teamNumber){ //adds a new robot with a specified team number to the robots in the competition
 		boolean duplicate = false;
 		for (int i = 0; i < robots.size(); i++){
-			if(robots.get(i).teamNumber==teamNumber){
+			if(robots.get(i).teamNumber.equals(teamNumber)){
 				duplicate = true;
 			}
 		}

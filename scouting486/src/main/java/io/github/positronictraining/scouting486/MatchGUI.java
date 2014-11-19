@@ -168,6 +168,7 @@ public class MatchGUI extends JFrame {
 				textField_3.setText("");
 				textField_4.setText("");
 				textField_5.setText("");
+				realTimeMatchGUI realTimeMatchGUI = new realTimeMatchGUI();
 			}
 		});
 		GridBagConstraints gbc_btnCreateMatch = new GridBagConstraints();
