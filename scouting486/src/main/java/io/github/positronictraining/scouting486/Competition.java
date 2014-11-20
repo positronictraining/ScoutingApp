@@ -92,6 +92,10 @@ public class Competition implements Serializable{
 		matches.add(newMatch);
 	}
 	
+	public void addMatch(Match match){
+		matches.add(match);
+	}
+	
 	public Game getCompetitionGame(){ //returns competitionGame because competitionGame is a private variable
 		return competitionGame;
 	}

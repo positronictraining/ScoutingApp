@@ -15,9 +15,15 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
 
-public class realTimeMatchGUI extends JFrame {
+public class RealTimeMatchGUI extends JFrame {
 
 	private JPanel contentPane;
+	private JComboBox pointTypeRed1;
+	private JComboBox pointTypeRed2;
+	private JComboBox pointTypeRed3;
+	private JComboBox pointTypeBlue1;
+	private JComboBox pointTypeBlue2;
+	private JComboBox pointTypeBlue3;
 	private JTextField penaltyBoxRed1;
 	private JTextField penaltyBoxRed2;
 	private JTextField penaltyBoxRed3;
@@ -26,8 +32,17 @@ public class realTimeMatchGUI extends JFrame {
 	private JTextField penaltyBoxBlue3;
 	private JTextField redScore;
 	private JTextField blueScore;
+	
+	private SerializationComm serialComm;
+	private DataModel dataModel;
+	private Match match;
 
-	public realTimeMatchGUI() {
+	public RealTimeMatchGUI(SerializationComm serialComm, DataModel dataModel, Match newMatch) {
+		
+		this.serialComm = serialComm;
+		this.dataModel = dataModel;
+		this.match = newMatch;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 425);
 		contentPane = new JPanel();
@@ -63,7 +78,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblPenalties.gridy = 0;
 		contentPane.add(lblPenalties, gbc_lblPenalties);
 		
-		JLabel lblRed1 = new JLabel("red1");
+		JLabel lblRed1 = new JLabel(match.redAlliance[0]);
 		GridBagConstraints gbc_lblRed1 = new GridBagConstraints();
 		gbc_lblRed1.anchor = GridBagConstraints.EAST;
 		gbc_lblRed1.insets = new Insets(0, 0, 5, 5);
@@ -71,7 +86,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblRed1.gridy = 1;
 		contentPane.add(lblRed1, gbc_lblRed1);
 		
-		JComboBox pointTypeRed1 = new JComboBox();
+		pointTypeRed1 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeRed1 = new GridBagConstraints();
 		gbc_pointTypeRed1.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeRed1.fill = GridBagConstraints.HORIZONTAL;
@@ -88,7 +103,7 @@ public class realTimeMatchGUI extends JFrame {
 		contentPane.add(penaltyBoxRed1, gbc_penaltyBoxRed1);
 		penaltyBoxRed1.setColumns(10);
 		
-		JLabel lblRed2 = new JLabel("red2");
+		JLabel lblRed2 = new JLabel(match.redAlliance[1]);
 		GridBagConstraints gbc_lblRed2 = new GridBagConstraints();
 		gbc_lblRed2.anchor = GridBagConstraints.EAST;
 		gbc_lblRed2.insets = new Insets(0, 0, 5, 5);
@@ -96,7 +111,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblRed2.gridy = 2;
 		contentPane.add(lblRed2, gbc_lblRed2);
 		
-		JComboBox pointTypeRed2 = new JComboBox();
+		pointTypeRed2 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeRed2 = new GridBagConstraints();
 		gbc_pointTypeRed2.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeRed2.fill = GridBagConstraints.HORIZONTAL;
@@ -113,7 +128,7 @@ public class realTimeMatchGUI extends JFrame {
 		contentPane.add(penaltyBoxRed2, gbc_penaltyBoxRed2);
 		penaltyBoxRed2.setColumns(10);
 		
-		JLabel lblRed3 = new JLabel("red3");
+		JLabel lblRed3 = new JLabel(match.redAlliance[2]);
 		GridBagConstraints gbc_lblRed3 = new GridBagConstraints();
 		gbc_lblRed3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRed3.anchor = GridBagConstraints.BELOW_BASELINE_TRAILING;
@@ -121,7 +136,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblRed3.gridy = 3;
 		contentPane.add(lblRed3, gbc_lblRed3);
 		
-		JComboBox pointTypeRed3 = new JComboBox();
+		pointTypeRed3 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeRed3 = new GridBagConstraints();
 		gbc_pointTypeRed3.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeRed3.fill = GridBagConstraints.HORIZONTAL;
@@ -160,7 +175,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblPenalties_1.gridy = 5;
 		contentPane.add(lblPenalties_1, gbc_lblPenalties_1);
 		
-		JLabel lblBlue1 = new JLabel("blue1");
+		JLabel lblBlue1 = new JLabel(match.blueAlliance[0]);
 		lblBlue1.setForeground(Color.BLACK);
 		GridBagConstraints gbc_lblBlue1 = new GridBagConstraints();
 		gbc_lblBlue1.anchor = GridBagConstraints.EAST;
@@ -169,7 +184,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblBlue1.gridy = 6;
 		contentPane.add(lblBlue1, gbc_lblBlue1);
 		
-		JComboBox pointTypeBlue1 = new JComboBox();
+		pointTypeBlue1 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeBlue1 = new GridBagConstraints();
 		gbc_pointTypeBlue1.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeBlue1.fill = GridBagConstraints.HORIZONTAL;
@@ -186,16 +201,16 @@ public class realTimeMatchGUI extends JFrame {
 		contentPane.add(penaltyBoxBlue1, gbc_penaltyBoxBlue1);
 		penaltyBoxBlue1.setColumns(10);
 		
-		JLabel lblBlue2 = new JLabel("blue2");
+		JLabel lblBlue2 = new JLabel(match.blueAlliance[1]);
 		lblBlue2.setForeground(Color.BLACK);
 		GridBagConstraints gbc_lblBlue2 = new GridBagConstraints();
 		gbc_lblBlue2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBlue2.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_lblBlue2.anchor = GridBagConstraints.EAST;
 		gbc_lblBlue2.gridx = 0;
 		gbc_lblBlue2.gridy = 7;
 		contentPane.add(lblBlue2, gbc_lblBlue2);
 		
-		JComboBox pointTypeBlue2 = new JComboBox();
+		pointTypeBlue2 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeBlue2 = new GridBagConstraints();
 		gbc_pointTypeBlue2.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeBlue2.fill = GridBagConstraints.HORIZONTAL;
@@ -212,7 +227,7 @@ public class realTimeMatchGUI extends JFrame {
 		contentPane.add(penaltyBoxBlue2, gbc_penaltyBoxBlue2);
 		penaltyBoxBlue2.setColumns(10);
 		
-		JLabel lblBlue3 = new JLabel("blue3");
+		JLabel lblBlue3 = new JLabel(match.blueAlliance[2]);
 		lblBlue3.setForeground(Color.BLACK);
 		GridBagConstraints gbc_lblBlue3 = new GridBagConstraints();
 		gbc_lblBlue3.anchor = GridBagConstraints.EAST;
@@ -221,7 +236,7 @@ public class realTimeMatchGUI extends JFrame {
 		gbc_lblBlue3.gridy = 8;
 		contentPane.add(lblBlue3, gbc_lblBlue3);
 		
-		JComboBox pointTypeBlue3 = new JComboBox();
+		pointTypeBlue3 = new JComboBox<Point>();
 		GridBagConstraints gbc_pointTypeBlue3 = new GridBagConstraints();
 		gbc_pointTypeBlue3.insets = new Insets(0, 0, 5, 5);
 		gbc_pointTypeBlue3.fill = GridBagConstraints.HORIZONTAL;
@@ -287,5 +302,12 @@ public class realTimeMatchGUI extends JFrame {
 		
 		this.setVisible(true);
 	}
-
+	//gameSelect = new JComboBox(serialcomm.getLibrary().getGameArray());
+	public void refreshPointTypes(){
+		
+	}
+	public void resetPenaltyBoxes(){
+		
+	}
+	
 }
