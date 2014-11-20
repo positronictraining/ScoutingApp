@@ -48,10 +48,12 @@ public class Match implements Serializable{
 		}
 	}
 	
-	public void penalty(String penaltyDescription, int penaltyValue, int penalizedTeam, String allianceEffected){ //adds a new penalty given certain values and adjusts the final score of the match
+	public void penalty(String penaltyDescription, int penaltyValue, String team, String allianceEffected){ //adds a new penalty given certain values and adjusts the final score of the match
 		//Point newPenalty = new Point((Point)game.pointTypes.toArray()[pointTypeIndex], penalizedTeam);
 		Point penalty = new Point();
 		penalty.setPointType(penaltyDescription, "penalties", penaltyValue);
+		penalty.setScoringTeam(team);
+		penalty.setPointValue(penaltyValue);
 		penalties.add(penalty);
 		if (allianceEffected == "red"){
 			redAllianceScore = redAllianceScore - penaltyValue;

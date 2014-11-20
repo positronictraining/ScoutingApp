@@ -38,4 +38,10 @@ public class Point implements Serializable{
 	public String getPointPeriod(){ //getter for pointPeriod since pointPeriod is private
 		return this.pointPeriod;
 	}
+	public void setScoringTeam(String team){
+		scoringTeam = team;
+	}
+	public void setPointValue(int value){
+		pointValue = value;
+	}
 }
