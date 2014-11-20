@@ -60,16 +60,16 @@ public class RealTimeMatchGUI extends JFrame {
 		ArrayList<Point> refreshedPointTypes = serialComm.getLibrary().getSelectedGame().getPointTypes();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 425);
+		setBounds(100, 100, 650, 450);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel redAlliance = new JLabel("Red Alliance");
@@ -121,6 +121,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValRed1 = new JSpinner();
 		GridBagConstraints gbc_penaltyValRed1 = new GridBagConstraints();
+		gbc_penaltyValRed1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValRed1.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValRed1.gridx = 3;
 		gbc_penaltyValRed1.gridy = 1;
@@ -153,6 +154,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValRed2 = new JSpinner();
 		GridBagConstraints gbc_penaltyValRed2 = new GridBagConstraints();
+		gbc_penaltyValRed2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValRed2.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValRed2.gridx = 3;
 		gbc_penaltyValRed2.gridy = 2;
@@ -185,6 +187,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValRed3 = new JSpinner();
 		GridBagConstraints gbc_penaltyValRed3 = new GridBagConstraints();
+		gbc_penaltyValRed3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValRed3.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValRed3.gridx = 3;
 		gbc_penaltyValRed3.gridy = 3;
@@ -240,6 +243,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValBlue1 = new JSpinner();
 		GridBagConstraints gbc_penaltyValBlue1 = new GridBagConstraints();
+		gbc_penaltyValBlue1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValBlue1.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValBlue1.gridx = 3;
 		gbc_penaltyValBlue1.gridy = 6;
@@ -273,6 +277,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValBlue2 = new JSpinner();
 		GridBagConstraints gbc_penaltyValBlue2 = new GridBagConstraints();
+		gbc_penaltyValBlue2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValBlue2.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValBlue2.gridx = 3;
 		gbc_penaltyValBlue2.gridy = 7;
@@ -306,6 +311,7 @@ public class RealTimeMatchGUI extends JFrame {
 		
 		penaltyValBlue3 = new JSpinner();
 		GridBagConstraints gbc_penaltyValBlue3 = new GridBagConstraints();
+		gbc_penaltyValBlue3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_penaltyValBlue3.insets = new Insets(0, 0, 5, 0);
 		gbc_penaltyValBlue3.gridx = 3;
 		gbc_penaltyValBlue3.gridy = 8;
@@ -329,33 +335,35 @@ public class RealTimeMatchGUI extends JFrame {
 		lblRedAllianceScore.setForeground(Color.RED);
 		GridBagConstraints gbc_lblRedAllianceScore = new GridBagConstraints();
 		gbc_lblRedAllianceScore.insets = new Insets(0, 0, 5, 5);
-		gbc_lblRedAllianceScore.gridx = 1;
-		gbc_lblRedAllianceScore.gridy = 11;
+		gbc_lblRedAllianceScore.gridx = 0;
+		gbc_lblRedAllianceScore.gridy = 10;
 		contentPane.add(lblRedAllianceScore, gbc_lblRedAllianceScore);
+		
+		redScore = new JTextField();
+		redScore.setForeground(Color.RED);
+		GridBagConstraints gbc_redScore = new GridBagConstraints();
+		gbc_redScore.fill = GridBagConstraints.HORIZONTAL;
+		gbc_redScore.insets = new Insets(0, 0, 5, 5);
+		gbc_redScore.gridx = 0;
+		gbc_redScore.gridy = 11;
+		contentPane.add(redScore, gbc_redScore);
+		redScore.setColumns(10);
 		
 		JLabel lblBlueAllianceScore = new JLabel("Blue Alliance Score");
 		lblBlueAllianceScore.setForeground(Color.BLUE);
 		GridBagConstraints gbc_lblBlueAllianceScore = new GridBagConstraints();
 		gbc_lblBlueAllianceScore.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBlueAllianceScore.gridx = 2;
-		gbc_lblBlueAllianceScore.gridy = 11;
+		gbc_lblBlueAllianceScore.gridx = 0;
+		gbc_lblBlueAllianceScore.gridy = 12;
 		contentPane.add(lblBlueAllianceScore, gbc_lblBlueAllianceScore);
-		
-		redScore = new JTextField();
-		redScore.setForeground(Color.RED);
-		GridBagConstraints gbc_redScore = new GridBagConstraints();
-		gbc_redScore.insets = new Insets(0, 0, 0, 5);
-		gbc_redScore.gridx = 1;
-		gbc_redScore.gridy = 12;
-		contentPane.add(redScore, gbc_redScore);
-		redScore.setColumns(10);
 		
 		blueScore = new JTextField();
 		blueScore.setForeground(Color.BLUE);
 		GridBagConstraints gbc_blueScore = new GridBagConstraints();
+		gbc_blueScore.fill = GridBagConstraints.HORIZONTAL;
 		gbc_blueScore.insets = new Insets(0, 0, 0, 5);
-		gbc_blueScore.gridx = 2;
-		gbc_blueScore.gridy = 12;
+		gbc_blueScore.gridx = 0;
+		gbc_blueScore.gridy = 13;
 		contentPane.add(blueScore, gbc_blueScore);
 		blueScore.setColumns(10);
 		
