@@ -44,4 +44,7 @@ public class Point implements Serializable{
 	public void setPointValue(int value){
 		pointValue = value;
 	}
+	public String toString() {
+		return pointName;
+	}
 }
