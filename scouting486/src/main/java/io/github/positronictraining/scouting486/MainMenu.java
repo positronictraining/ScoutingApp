@@ -145,6 +145,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		if (event.getSource() == btnNewCompetition){
 			System.out.println("the new competition button was pressed");
 			newCompetitionFrame = new NewCompetitionFrame(serialComm);
+			newCompetitionFrame.refreshCompetitionGameComboBox(serialComm.getLibrary().getGameList());
 		}
 		else if (event.getSource() == btnNewMatch){ //what happens if the new match button was pressed
 			System.out.println("the new match button was pressed");
