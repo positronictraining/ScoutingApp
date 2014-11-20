@@ -16,6 +16,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -157,6 +158,15 @@ public class NewCompetitionFrame extends JFrame {
 		});
 		panel.add(newCompetitionBtn, gbc_newCompetitionBtn);
 		this.setVisible(true);
+		
+	}
+	public void refreshCompetitionGameComboBox(ArrayList<Game> gameList){
+		this.competitionGameComboBox.removeAll(); //
+		for (Game g:gameList) {
+			this.competitionGameComboBox.addItem(g); //
+		}
+//		competitionGameComboBox = new JComboBox(gameList.toArray());
+		System.out.println("Refreshed Combo BoxGame List"); //
 	}
 
 }
