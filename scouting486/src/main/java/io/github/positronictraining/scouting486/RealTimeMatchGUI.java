@@ -20,11 +20,13 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JSpinner;
 
-public class RealTimeMatchGUI extends JFrame {
+public class RealTimeMatchGUI extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JComboBox pointTypeRed1;
@@ -318,6 +320,7 @@ public class RealTimeMatchGUI extends JFrame {
 		contentPane.add(penaltyValBlue3, gbc_penaltyValBlue3);
 		
 		JButton btnSubmitPointsScored = new JButton("Submit Points Scored");
+		btnSubmitPointsScored.addActionListener(this);
 		GridBagConstraints gbc_btnSubmitPointsScored = new GridBagConstraints();
 		gbc_btnSubmitPointsScored.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSubmitPointsScored.gridx = 1;
@@ -325,6 +328,7 @@ public class RealTimeMatchGUI extends JFrame {
 		contentPane.add(btnSubmitPointsScored, gbc_btnSubmitPointsScored);
 		
 		JButton btnSubmitPenalties = new JButton("Submit Penalties");
+		btnSubmitPenalties.addActionListener(this);
 		GridBagConstraints gbc_btnSubmitPenalties = new GridBagConstraints();
 		gbc_btnSubmitPenalties.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSubmitPenalties.gridx = 2;
@@ -340,6 +344,7 @@ public class RealTimeMatchGUI extends JFrame {
 		contentPane.add(lblRedAllianceScore, gbc_lblRedAllianceScore);
 		
 		redScore = new JTextField();
+		redScore.setEditable(false);
 		redScore.setForeground(Color.RED);
 		GridBagConstraints gbc_redScore = new GridBagConstraints();
 		gbc_redScore.fill = GridBagConstraints.HORIZONTAL;
@@ -358,6 +363,7 @@ public class RealTimeMatchGUI extends JFrame {
 		contentPane.add(lblBlueAllianceScore, gbc_lblBlueAllianceScore);
 		
 		blueScore = new JTextField();
+		blueScore.setEditable(false);
 		blueScore.setForeground(Color.BLUE);
 		GridBagConstraints gbc_blueScore = new GridBagConstraints();
 		gbc_blueScore.fill = GridBagConstraints.HORIZONTAL;
@@ -380,24 +386,66 @@ public class RealTimeMatchGUI extends JFrame {
 	}
 	
 	private void submitPenaltyBoxes(){
-		//get the value of the penalty boxes
-		//check if there is a penalty
-		//add penalty using penalty(String penaltyDescription, int penaltyValue, int penalizedTeam, String allianceEffected)
-		if(checkIfNoPenalty(penaltyBoxRed1.getText())){
+		if(checkIfNoValue(penaltyBoxRed1.getText())){
 			match.penalty(penaltyBoxRed1.getText(), (Integer) penaltyValRed1.getValue(), match.redAlliance[0], "red");
 		}
-		//add that data to the selected competition in the selected competition
-		resetPenaltyBoxes();
+		if(checkIfNoValue(penaltyBoxRed2.getText())){
+			match.penalty(penaltyBoxRed2.getText(), (Integer) penaltyValRed2.getValue(), match.redAlliance[1], "red");
+		}
+		if(checkIfNoValue(penaltyBoxRed3.getText())){
+			match.penalty(penaltyBoxRed3.getText(), (Integer) penaltyValRed3.getValue(), match.redAlliance[2], "red");
+		}
+		if(checkIfNoValue(penaltyBoxBlue1.getText())){
+			match.penalty(penaltyBoxBlue1.getText(), (Integer) penaltyValBlue1.getValue(), match.blueAlliance[0], "blue");
+		}
+		if(checkIfNoValue(penaltyBoxBlue2.getText())){
+			match.penalty(penaltyBoxBlue2.getText(), (Integer) penaltyValBlue2.getValue(), match.blueAlliance[1], "blue");
+		}
+		if(checkIfNoValue(penaltyBoxBlue3.getText())){
+			match.penalty(penaltyBoxBlue3.getText(), (Integer) penaltyValBlue3.getValue(), match.blueAlliance[2], "blue");
+		}
+		this.resetPenaltyBoxes();
 	}
-	private boolean checkIfNoPenalty(String penaltyDescription){
-		if(penaltyDescription == null){
+	
+	private boolean checkIfNoValue(Object object){
+		if(object == null){
 			return true;
 		}else{
 			return false;
 		}
 	}
+	
 	private void submitPointsScored(){
-		//get the selected value of the point combo boxes
-		//add that data to the selected competition in the selected competition
+		if(checkIfNoValue(pointTypeRed1.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeRed1.getSelectedIndex() - 1), match.blueAlliance[0], "red");
+		}
+		if(checkIfNoValue(pointTypeRed2.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeRed2.getSelectedIndex() - 1), match.blueAlliance[1], "red");
+		}
+		if(checkIfNoValue(pointTypeRed3.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeRed3.getSelectedIndex() - 1), match.blueAlliance[2], "red");
+		}
+		if(checkIfNoValue(pointTypeBlue1.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeBlue1.getSelectedIndex() - 1), match.blueAlliance[0], "blue");
+		}
+		if(checkIfNoValue(pointTypeBlue2.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeBlue2.getSelectedIndex() - 1), match.blueAlliance[1], "blue");
+		}
+		if(checkIfNoValue(pointTypeBlue3.getSelectedItem())){
+			match.pointScored(serialComm.getLibrary().getSelectedGame(), (pointTypeBlue3.getSelectedIndex() - 1), match.blueAlliance[2], "blue");
+		}
+	}
+	
+	private void updateScoreBoard(){
+		
+	}
+
+	public void actionPerformed(ActionEvent event) {
+		// TODO Auto-generated method stub
+		if (event.getSource() == "btnSubmitPointsScored"){
+			this.submitPenaltyBoxes();
+		}else{
+			this.submitPointsScored();
+		}
 	}
 }
