@@ -1,3 +1,60 @@
+//                              .          /MMMMMMMMMMMMMN                                          
+//                          .:ohd-`        /MMMMMMMMMMMMMN        `/ss:.`                            
+//                       `:sdNMMMm:`  `.:/ohMMMMMMMMMMMMMNso/:-`  /dMMMdy/.`                         
+//                   `-+hNMMMMMMMMmyydmNNMMMMMMMMMMMMMMMMMMMMMNNdhNMMMMMMMNdo-`                      
+//                   ymNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNds-                    
+//                   :dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh/                    
+//                    :hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh:                     
+//                   -odMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMdo-`                   
+//         .-.     .+dNMMMMMMMMMMMMMMMMMMMMMMNNNmmmmmmNNNNMMMMMMMMMMMMMMMMMMMMMNdo-     `-           
+//        -smmy/.-+dMMMMMMMMMMMMMMMMMMMNmhso/:-.........-:+sydmNMMMMMMMMMMMMMMMMMNm+.-/sdm+`         
+//       -yNMMMNmmNMMMMMMMMMMMMMMMMNdy+-.`                  ``-:ohmNMMMMMMMMMMMMMMMNdmNMMMNo.        
+//      -hNMMMMMMMMMMMMMMMMMMMMMMMMNho:.``                      ``-+ymMMMMMMMMMMMMMMMMMMMMMNs-       
+//    `.dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNmhs/-.                       `-omNMMMMMMMMMMMMMMMMMMMNy-      
+//   `:dMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNdy+:.`                     .+dNMMMMMMMMMMMMMMMMMMNh-     
+//   -sNMMMMMMMMMMMMMMMMMMMmmNMMMMMMMMMMMNNNNNNmdy+:`                   `-omMMMMMMMMMMMMMMMMMMNd.    
+//   `.:sdNMMMMMMMMMMMMMMms--:+ydmNMMMMMm+:--::/ymMNho:.`                 `:hMMMMMMMMMMMMMMMMNmy-`   
+//       -hMMMMMMMMMMMMMNh/-.````.:oydNMms:.-oyshNMMMMMmhs/-.```            `yNMMMMMMMMMMMMms:.      
+//       omMMMMMMMMMMMMMMMNNmdyso+/::/sNMMNdyyMMMMMMMMMMMMNNmhys+:`          .yNMMMMMMMMMMMNo`       
+//      .mMMMMMMMMMMMMMMMMMMMMMMMMNNmmmNMMMMMMMMMMMMMMNdhyhdNNMMMmy:`         .yNMMMMMMMMMMMh:       
+//     `sNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNymNMMMMMMMMMMMy: `:++ohNMNMms-         :hMMMMMMMMMMMNs`      
+//.....-mMMMMMMMMMMMMMMMMMMMMMMMMMMMMNh/smMMMMMNmdddmNNh+-.shs/+hhNMNd-        `+NMMMMMMMMMMMd:....` 
+//ddddddMMMMMMMMMMMMMMMMMMMMMMMMMMMMds:yNMMMMMMNmmddysyhddhdmmmdddNMMMd/.       :yMMMMMMMMMMMNmddddo 
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy++dMMMMMMMMMMMNmddhyyyydNMMMMMMMMMMMh/.     .+MMMMMMMMMMMMMMMMMs 
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm++hNMMMMMMMMMmyo+/+ooo+ossshmNMMMMMMMMmdy+:.  `:MMMMMMMMMMMMMMMMMs`
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm-/dMMMMMMMMMMmhhddhssoossssssyhhNMMMMMMhyo/oy+. :NMMMMMMMMMMMMMMMMs 
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy hNMMMMMMMMMMMMdssymNMMMMMMNNNNNNMMMMMMMMd++sd/`:MMMMMMMMMMMMMMMMMs 
+//MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm-yNMMMMMMMMMMNhhmNMMMNmddmNMMMMMMMMMMMMMMMNmo:``/MMMMMMMMMMMMMMMMMs 
+//MMMMMMMMMMMMMMMMMMMMMMMMNmhyyydhohNMMMMMMMMMmmNMMMMh+:/oydmNNNMmmmNNMMMMms-   -sMMMMMMMMMMMMMMMMNs 
+//ooooosNMMMMMMMMMMMMMMMdo-``   `:yhhdmMMMMMMMMMMMMMy:odmdo/:::+y.-ohdydNh+`    /dMMMMMMMMMMMmyoooo: 
+//     `hNMMMMMMMMMMMMMy-         `-ohdMMMMMMMMMMMMN/dmy:`   `:o//:/oy:o-`     .sMMMMMMMMMMMMy`      
+//      /mMMMMMMMMMMMMM+`           `.:shhmNMMMMMMNddh/.     `-:-``/o+:`      `omMMMMMMMMMMMmo       
+//      `hNMMMMMMMMMMMMy-               ``-oNMMMMMMmy-             ```        /dMMMMMMMMMMMMs.       
+//     `.smMMMMMMMMMMMMNy-                 :dMMMMMNd``.-::`:.                +mMMMMMMMMMMMMm+`       
+//  `-+ydNMMMMMMMMMMMMMMNh:                :dMMMMMNy-+shdoyy-              `+NMMMMMMMMMMMMMNds/.     
+//  .oNMMMMMMMMMMMMMMMMMMMm/`              :dMMMMMMNNmNNdoo-`            `-sNMMMMMMMMMMMMMMMMMNh`    
+//   -oNMMMMMMMMMMMMMMMMMMMNy/`            `/mMMMMMMMMMNh.              -omMMMMMMMMMMMMMMMMMMNd:     
+//    .oNMMMMMMMMMMMMMMMMMMMMmy/.           `-+ydmmNNNNNy`           `-odNMMMMMMMMMMMMMMMMMMNh:      
+//     `oNMMMMMMMMMMMMMMMMMMMMMNd+-`           `..-/+oo+-          .:smMMMMMMMMMMMMMMMMMMMMNy:       
+//      `+mMMMMMNNMMMMMMMMMMMMMMMMmho:.`                       `-/ydNMMMMMMMMMMMMMMMNmNMMMNs-        
+//       `+dNNho/+hNMMMMMMMMMMMMMMMMMNdyo/:.`````    `````.-/+shmNMMMMMMMMMMMMMMMMNh/-/shmo.         
+//        `:+:`  `.+dMMMMMMMMMMMMMMMMMMMMNNmdhysoo+++ossyhdmNNMMMMMMMMMMMMMMMMMMNdo.   `.-`          
+//                  .omNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNdo-                   
+//                   -hNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm/`                    
+//                  .dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh/`                   
+//                 `+mNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNh:                   
+//                  `./sdNMMMMMMMMNmmNMMMMMMMMMMMMMMMMMMMMMMMMMMNmdmMMMMMMMMNmy+-`                   
+//                     `.:odmNMMMN+--:+shddmMMMMMMMMMMMMMMmddhso:-.+dMMMMNdy/.`                      
+//                         `-+ymN/`      `.+MMMMMMMMMMMMMN-.`      `:dNdo:.                          
+//                             `.          /MMMMMMMMMMMMMN           `-                              
+//                                         .++++++++++++++                                           
+//                           _____                      _  _    ___   __   
+//                          |_   _|__  __ _ _ __ ___   | || |  ( _ ) / /_  
+//                            | |/ _ \/ _` | '_ ` _ \  | || |_ / _ \| '_ \ 
+//                            | |  __/ (_| | | | | | | |__   _| (_) | (_) |
+//                            |_|\___|\__,_|_| |_| |_|    |_|  \___/ \___/ 
+                                                                                                   
+
 package io.github.positronictraining.scouting486;
 
 import java.io.EOFException;
