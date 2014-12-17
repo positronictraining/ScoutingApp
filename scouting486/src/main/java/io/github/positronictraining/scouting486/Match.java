@@ -78,5 +78,4 @@ public class Match implements Serializable{
 	public String getGameComment(){	//getter for gameComment since gameComment is private
 		return gameComment;
 	}
-
 }
